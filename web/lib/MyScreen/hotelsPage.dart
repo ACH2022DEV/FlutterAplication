@@ -1,9 +1,9 @@
 import 'dart:convert';
 import 'package:intl/intl.dart';
 
-import 'dart:html' as html;
-import 'dart:html';
-import 'dart:js' as js; //commented for mobile
+ import 'dart:html' as html;
+ import 'dart:html';
+ import 'dart:js' as js; //commented for mobile
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:geocoding/geocoding.dart';
 
@@ -224,7 +224,7 @@ class _HotelsPageState extends State<HotelsPage> {
       print('Erreur lors de l\'obtention de la localisation : $e');
     }
   } 
-
+ 
   Future<String> getIPAddress() async {
     try {
       var response =
@@ -4814,7 +4814,7 @@ class _HotelsPageState extends State<HotelsPage> {
                                                                                               HotelId = item.hotel.hotelId;
 
                                                                                               print('hotelnameclicked${item.hotel.hotelName}');
-                                                                                              //    await getCurrentLocationForweb();
+                                                                                                  await getCurrentLocationForweb();
                                                                                               await createApiProduct();
                                                                                               var url = seller.detailsLink;
                                                                                               if (await canLaunch(url)) {

@@ -18,7 +18,7 @@ class About extends StatefulWidget {
 class _AboutState extends State<About> {
   @override
   Widget build(BuildContext context) {
-    return HotelMapScreen();
+    return GoogleMap();
 
     /*  Scaffold(
       backgroundColor: Colors.white,
