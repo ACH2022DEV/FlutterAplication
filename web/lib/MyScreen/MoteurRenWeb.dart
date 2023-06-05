@@ -822,9 +822,9 @@ class _MoteurWebState extends State<MoteurWeb> {
   Color _color = Color.fromARGB(255, 255, 255, 255);
   Color _color1 = Color.fromARGB(255, 255, 255, 255);
   Color _color3 = Color.fromARGB(255, 255, 255, 255);
-  Color _colorBlanc = Color.fromARGB(255, 248, 247, 248);
+  Color _colorBlanc = Color.fromARGB(255, 255, 255, 255);
 
-  Color _color2 = Color.fromARGB(255, 208, 208, 208);
+  Color _color2 = Color.fromARGB(255, 212, 32, 32);
   bool _isCodeVisible = false;
   bool _isChampsChambresVisible = false;
 
@@ -1275,7 +1275,8 @@ class _MoteurWebState extends State<MoteurWeb> {
                                     });
                                   },
                                   child: Material(
-                                      elevation: 5,
+                                      borderRadius: BorderRadius.circular(40),
+                                      elevation: 3,
                                       child: Container(
                                         width: 180,
                                         height: 40,
@@ -1283,10 +1284,9 @@ class _MoteurWebState extends State<MoteurWeb> {
                                           //  color: Color.fromARGB(255, 255, 255, 255),
                                           color: _color,
                                           borderRadius:
-                                              BorderRadius.circular(0),
+                                              BorderRadius.circular(40),
                                           border: Border.all(
-                                            color: Color.fromARGB(
-                                                255, 156, 156, 156),
+                                            color: Color.fromARGB(255, 8, 4, 4),
                                             width: 1,
                                           ),
                                           boxShadow: [
@@ -1302,8 +1302,13 @@ class _MoteurWebState extends State<MoteurWeb> {
                                         child: Center(
                                             child: Row(
                                           children: [
+                                            SizedBox(
+                                              width: 2.w,
+                                            ),
                                             Icon(
                                               Icons.hotel,
+                                              color:
+                                                  Color.fromARGB(255, 8, 4, 4),
                                               size: 30,
                                             ),
                                             Text(
@@ -1311,7 +1316,7 @@ class _MoteurWebState extends State<MoteurWeb> {
                                               style: TextStyle(
                                                 fontSize: 20,
                                                 color: Color.fromARGB(
-                                                    255, 12, 10, 10),
+                                                    255, 8, 4, 4),
                                                 fontWeight: FontWeight.bold,
                                               ),
                                             ),
@@ -1339,20 +1344,22 @@ class _MoteurWebState extends State<MoteurWeb> {
                                     });
                                   },
                                   child: Material(
-                                      elevation: 5,
+                                      borderRadius: BorderRadius.circular(40),
+                                      elevation: 3,
                                       child: Container(
                                         width: 180,
                                         height: 40,
                                         decoration: BoxDecoration(
                                           //color: Color.fromARGB(255, 255, 255, 255),
                                           border: Border.all(
-                                            color: Color.fromARGB(
-                                                255, 123, 119, 119),
+                                            color: _showCircuitContainer
+                                                ? Colors.transparent
+                                                : Color.fromARGB(255, 8, 4, 4),
                                             width: 1,
                                           ),
                                           color: _color1,
                                           borderRadius:
-                                              BorderRadius.circular(5),
+                                              BorderRadius.circular(40),
                                           boxShadow: [
                                             /* BoxShadow(
                                   color: Colors.grey.withOpacity(0.2),
@@ -1366,16 +1373,27 @@ class _MoteurWebState extends State<MoteurWeb> {
                                         child: Center(
                                             child: Row(
                                           children: [
+                                            SizedBox(
+                                              width: 2.w,
+                                            ),
                                             Icon(
                                               Icons.alt_route,
+                                              color: _showCircuitContainer
+                                                  ? Color.fromARGB(
+                                                      255, 255, 255, 255)
+                                                  : Color.fromARGB(
+                                                      255, 8, 4, 4),
                                               size: 30,
                                             ),
                                             Text(
                                               'Tours ',
                                               style: TextStyle(
                                                 fontSize: 20,
-                                                color: Color.fromARGB(
-                                                    255, 8, 4, 4),
+                                                color: _showCircuitContainer
+                                                    ? Color.fromARGB(
+                                                        255, 255, 255, 255)
+                                                    : Color.fromARGB(
+                                                        255, 8, 4, 4),
                                                 fontWeight: FontWeight.bold,
                                               ),
                                             ),
@@ -1414,7 +1432,8 @@ class _MoteurWebState extends State<MoteurWeb> {
                                     });
                                   },
                                   child: Material(
-                                      elevation: 5,
+                                      borderRadius: BorderRadius.circular(40),
+                                      elevation: 3,
                                       child: Container(
                                         width: 180,
                                         height: 40,
@@ -1423,10 +1442,11 @@ class _MoteurWebState extends State<MoteurWeb> {
                                           color: _color3,
 
                                           borderRadius:
-                                              BorderRadius.circular(5),
+                                              BorderRadius.circular(40),
                                           border: Border.all(
-                                            color: Color.fromARGB(
-                                                255, 123, 119, 119),
+                                            color: _showVisaContainer
+                                                ? Colors.transparent
+                                                : Color.fromARGB(255, 8, 4, 4),
                                             width: 1,
                                           ),
                                           boxShadow: [
@@ -1441,16 +1461,27 @@ class _MoteurWebState extends State<MoteurWeb> {
                                         child: Center(
                                             child: Row(
                                           children: [
+                                            SizedBox(
+                                              width: 2.w,
+                                            ),
                                             Icon(
                                               Icons.flight,
+                                              color: _showVisaContainer
+                                                  ? Color.fromARGB(
+                                                      255, 255, 255, 255)
+                                                  : Color.fromARGB(
+                                                      255, 8, 4, 4),
                                               size: 30,
                                             ),
                                             Text(
                                               'Traveling ',
                                               style: TextStyle(
                                                 fontSize: 20,
-                                                color: Color.fromARGB(
-                                                    255, 8, 4, 4),
+                                                color: _showVisaContainer
+                                                    ? Color.fromARGB(
+                                                        255, 255, 255, 255)
+                                                    : Color.fromARGB(
+                                                        255, 8, 4, 4),
                                                 fontWeight: FontWeight.bold,
                                               ),
                                             ),
@@ -1500,7 +1531,8 @@ class _MoteurWebState extends State<MoteurWeb> {
                                                     .textTheme
                                                     .displayMedium,
                                                 fontSize: 16,
-                                                color: Colors.black,
+                                                color: Color.fromARGB(
+                                                    255, 0, 0, 0),
                                               ),
                                             ),
                                           ),
@@ -1511,10 +1543,13 @@ class _MoteurWebState extends State<MoteurWeb> {
                                               border: OutlineInputBorder(
                                                   borderRadius:
                                                       BorderRadius.circular(
-                                                          80)),
+                                                          80),
+                                                         borderSide: BorderSide(
+        color: Colors.black, // Modifier cette valeur pour la couleur noire
+        width: 2.0, // Épaisseur de la bordure selon vos besoins
+      ),),
                                               //  border: InputBorder.none,
-                                              focusColor: const Color.fromARGB(
-                                                  255, 183, 183, 183),
+                                              focusColor: Color.fromARGB(255, 1, 1, 1),
                                             ),
                                             value: _selectedOption5[0],
                                             onChanged: (String? newValue) {
@@ -1578,7 +1613,8 @@ class _MoteurWebState extends State<MoteurWeb> {
                                                     .textTheme
                                                     .displayMedium,
                                                 fontSize: 16,
-                                                color: Colors.black,
+                                                color: Color.fromARGB(
+                                                    255, 0, 0, 0),
                                               ),
                                             ),
                                           ),
@@ -1590,9 +1626,9 @@ class _MoteurWebState extends State<MoteurWeb> {
                                               color: Colors.white,
                                               border: Border.all(
                                                 color:
-                                                    Color.fromARGB(255, 7, 5, 5)
-                                                        .withOpacity(0.2),
-                                                width: 3,
+                                                    Color.fromARGB(255, 173, 173, 173),
+                                                        
+                                                width: 2,
                                               ),
                                               borderRadius:
                                                   BorderRadius.circular(10),
@@ -1692,7 +1728,8 @@ class _MoteurWebState extends State<MoteurWeb> {
                                                       .textTheme
                                                       .displayMedium,
                                                   fontSize: 16,
-                                                  color: Colors.black),
+                                                  color: Color.fromARGB(
+                                                      255, 0, 0, 0)),
                                             ),
                                           ),
                                           SizedBox(height: 7),
@@ -1703,9 +1740,9 @@ class _MoteurWebState extends State<MoteurWeb> {
                                               color: Colors.white,
                                               border: Border.all(
                                                 color:
-                                                    Color.fromARGB(255, 7, 5, 5)
-                                                        .withOpacity(0.2),
-                                                width: 3,
+                                                    Color.fromARGB(255, 173, 173, 173),
+                                                       
+                                                width: 2,
                                               ),
                                               borderRadius:
                                                   BorderRadius.circular(10),
@@ -1841,16 +1878,15 @@ class _MoteurWebState extends State<MoteurWeb> {
                                           });
                                         },
                                         child: Container(
-                                          height: 100,
+                                          height: 90,
                                           width: 20,
                                           decoration: BoxDecoration(
                                             color: Color.fromARGB(
                                                 255, 255, 255, 255),
                                             border: Border.all(
                                               color:
-                                                  Color.fromARGB(255, 7, 5, 5)
-                                                      .withOpacity(0.2),
-                                              width: 3,
+                                                    Color.fromARGB(255, 173, 173, 173),
+                                              width: 2,
                                             ),
                                             borderRadius:
                                                 BorderRadius.circular(10),
@@ -1884,7 +1920,7 @@ class _MoteurWebState extends State<MoteurWeb> {
                                                                   context)
                                                               .textTheme
                                                               .displayMedium,
-                                                          fontSize: 16,
+                                                          fontSize: 16.sp,
                                                           color: Colors.black),
                                                     ),
                                                   ],
@@ -1924,7 +1960,7 @@ class _MoteurWebState extends State<MoteurWeb> {
                                             backgroundColor:
                                                 MaterialStateProperty
                                                     .all<Color>(Color.fromARGB(
-                                                        255, 0, 0, 0)),
+                                                        255, 212, 32, 32)),
                                             shape: MaterialStateProperty.all<
                                                 RoundedRectangleBorder>(
                                               RoundedRectangleBorder(
@@ -1932,8 +1968,7 @@ class _MoteurWebState extends State<MoteurWeb> {
                                                     BorderRadius.circular(82),
                                                 side: BorderSide(
                                                   color: Color.fromARGB(
-                                                          255, 7, 7, 7)
-                                                      .withOpacity(0.2),
+                                                      255, 212, 32, 32),
                                                   width: 3.0,
                                                 ),
                                               ),
@@ -2154,16 +2189,16 @@ class _MoteurWebState extends State<MoteurWeb> {
                                         style: ButtonStyle(
                                           backgroundColor:
                                               MaterialStateProperty.all<Color>(
-                                                  Color.fromARGB(255, 0, 0, 0)),
+                                            Color.fromARGB(255, 212, 32, 32),
+                                          ),
                                           shape: MaterialStateProperty.all<
                                               RoundedRectangleBorder>(
                                             RoundedRectangleBorder(
                                               borderRadius:
                                                   BorderRadius.circular(82),
                                               side: BorderSide(
-                                                color:
-                                                    Color.fromARGB(255, 0, 0, 0)
-                                                        .withOpacity(0.2),
+                                                color: Color.fromARGB(
+                                                    255, 212, 32, 32),
                                                 width: 3.0,
                                               ),
                                             ),
@@ -2343,9 +2378,10 @@ class _MoteurWebState extends State<MoteurWeb> {
                                           onPressed: () {},
                                           style: ButtonStyle(
                                             backgroundColor:
-                                                MaterialStateProperty
-                                                    .all<Color>(Color.fromARGB(
-                                                        255, 0, 0, 0)),
+                                                MaterialStateProperty.all<
+                                                    Color>(
+                                              Color.fromARGB(255, 212, 32, 32),
+                                            ),
                                             shape: MaterialStateProperty.all<
                                                 RoundedRectangleBorder>(
                                               RoundedRectangleBorder(
@@ -2353,8 +2389,7 @@ class _MoteurWebState extends State<MoteurWeb> {
                                                     BorderRadius.circular(82),
                                                 side: BorderSide(
                                                   color: Color.fromARGB(
-                                                          255, 0, 0, 0)
-                                                      .withOpacity(0.2),
+                                                      255, 212, 32, 32),
                                                   width: 3.0,
                                                 ),
                                               ),
@@ -2435,6 +2470,7 @@ class _MyModalState extends State<MyModal> {
   int nbAdultes = 0;
   int Nbchambres = 0;
   int counter = 0;
+  int counters = 0;
   // Map<String, dynamic> body;
 
   Map<String, dynamic> occupancies = {};
@@ -2617,6 +2653,8 @@ class _MyModalState extends State<MyModal> {
                   itemBuilder: (BuildContext context, int index) {
                     var fieldNumber = index + 1;
 
+                    counters = _numFields;
+
                     return Column(
                       children: [
                         Container(
@@ -2633,7 +2671,7 @@ class _MyModalState extends State<MyModal> {
                                 ),
                                 Spacer(),
                                 if (index == 0)
-                                  CircleAvatar(
+                                  /* CircleAvatar(
                                     backgroundColor:
                                         Color.fromARGB(255, 2, 2, 2),
                                     child: IconButton(
@@ -2643,12 +2681,32 @@ class _MyModalState extends State<MyModal> {
                                         removeSelectFields(index);
                                       },
                                     ),
-                                  ),
+                                  ), */  Container(
+                                    width: 40,
+                                    height: 40,
+                                    decoration: BoxDecoration(
+    color: Colors.white,
+    border: Border.all(
+      color: Color.fromARGB(255, 0, 0, 0),
+      width: 1,
+    ),
+    shape: BoxShape.circle,
+  ),
+                               
+                                    child:Center(
+                                    child: IconButton(
+                                      icon: Icon(Icons.remove),
+                                      color: Color.fromARGB(255, 0, 0, 0),
+                                      onPressed: () {
+                                        removeSelectFields(index);
+                                      },
+                                    ),
+                                    ) ),
                                 SizedBox(
                                   width: 10,
                                 ),
                                 if (index == 0)
-                                  CircleAvatar(
+                                 /*  CircleAvatar(
                                     backgroundColor:
                                         Color.fromARGB(255, 3, 3, 3),
                                     child: IconButton(
@@ -2658,7 +2716,28 @@ class _MyModalState extends State<MyModal> {
                                         addSelectFields();
                                       },
                                     ),
-                                  )
+                                  ) */
+                                    Container(
+                                    width: 40,
+                                    height: 40,
+                                    decoration: BoxDecoration(
+    color: Colors.white,
+    border: Border.all(
+      color: Color.fromARGB(255, 0, 0, 0),
+      width: 1,
+    ),
+    shape: BoxShape.circle,
+  ),
+                               
+                                    child:Center(
+                                    child: IconButton(
+                                      icon: Icon(Icons.add),
+                                      color: Color.fromARGB(255, 0, 0, 0),
+                                      onPressed: () {
+                                          addSelectFields();
+                                      },
+                                    ),
+                                    ) ),
                               ],
                             )),
                         /* ListTile(
@@ -2820,9 +2899,19 @@ class _MyModalState extends State<MyModal> {
         },
         child: Icon(Icons.add),
       ), */
+
                 Container(
                     height: 60,
-                    margin: EdgeInsets.only(left: 5, right: 5, top: 10),
+                    margin: EdgeInsets.only(
+                        left: 5,
+                        right: 5,
+                        top: counters == 0
+                            ? 150
+                            : counters == 1
+                                ? 40
+                                : counters == 2
+                                    ? 10
+                                    : 0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       crossAxisAlignment: CrossAxisAlignment.end,
@@ -2833,24 +2922,24 @@ class _MyModalState extends State<MyModal> {
                               shape: MaterialStateProperty.all<
                                   RoundedRectangleBorder>(
                                 RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(60),
+                                  borderRadius: BorderRadius.circular(40),
                                   side: BorderSide(
-                                    color: Color.fromARGB(255, 76, 71, 71)
-                                        .withOpacity(0.2),
-                                    width: 3.0,
+                                    color: Color.fromARGB(255, 0, 0, 0)
+                                        ,
+                                    width: 1.0,
                                   ),
                                 ),
                               ),
                               elevation: MaterialStateProperty.all(5),
                               backgroundColor: MaterialStateProperty.all<Color>(
-                                  Colors.black)),
+                                  Color.fromARGB(255, 255, 255, 255))),
                           onPressed: () {
                             // Action pour le bouton "Cancel"
                             Navigator.of(context).pop();
                           },
                           child: Text(
                             'Cancel',
-                            style: TextStyle(color: Colors.white),
+                            style: TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
                           ),
                         )),
                         SizedBox(
@@ -2862,17 +2951,17 @@ class _MyModalState extends State<MyModal> {
                               shape: MaterialStateProperty.all<
                                   RoundedRectangleBorder>(
                                 RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(60),
+                                  borderRadius: BorderRadius.circular(40),
                                   side: BorderSide(
-                                    color: Color.fromARGB(255, 76, 71, 71)
-                                        .withOpacity(0.2),
-                                    width: 3.0,
+                                    color: Color.fromARGB(255, 0, 0, 0)
+                                      ,
+                                    width: 1.0,
                                   ),
                                 ),
                               ),
                               elevation: MaterialStateProperty.all(5),
                               backgroundColor: MaterialStateProperty.all<Color>(
-                                  Colors.black)),
+                                  Color.fromARGB(255, 255, 255, 255))),
                           onPressed: () async {
                             await setChambre();
                             envoyerDonnees();
@@ -2880,7 +2969,7 @@ class _MyModalState extends State<MyModal> {
                           },
                           child: Text(
                             'OK',
-                            style: TextStyle(color: Colors.white),
+                            style: TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
                           ),
                         )),
                         SizedBox(

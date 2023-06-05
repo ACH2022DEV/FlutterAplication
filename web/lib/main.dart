@@ -24,10 +24,23 @@ import 'MyScreen/menu.dart';
 import 'MyScreen/rechercheessai.dart';
 import 'MyScreen/MoteurRenWeb.dart';
 import 'models/ApiHotels&Sellers.dart';
-// import 'MyScreen/test.dart';
+import 'package:mapbox_gl_dart/mapbox_gl_dart.dart';
 
+// import 'MyScreen/test.dart';
+/* import 'dart:js' as js;
+import 'dart:html'; */
 void main() async {
-   
+    /*  Mapbox.accessToken =
+      'pk.eyJ1IjoiYWJkZWxheml6Y2hhcmZpIiwiYSI6ImNsaWVwdnpyZTBicmQzZHA2Z2d3YWo3enMifQ.KPZ7B1rpAlcaS1Zb1hAhkQ';
+
+  MapboxMap(
+    MapOptions(
+      container: 'map',
+      style: 'mapbox://styles/mapbox/dark-v10',
+      center: LngLat(7.68227, 45.06755),
+      zoom: 12,
+    ),
+  ); */
   runApp(const MyApp());
   //final response = await fetchPosts();
 

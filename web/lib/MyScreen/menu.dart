@@ -19,37 +19,61 @@ class HeaderWebMenu extends StatelessWidget {
     return Row(
       children: [
         HeaderMenu(
-          press: ()  {
-           Navigator.pushNamed(
-                                              context, '/Favoris');
+          press: () {
+            Navigator.pushNamed(context, '/Favoris');
           },
           title: Column(
             children: [
-             
-              Row(
-                children: const [
-                  Icon(
-                    Icons
-                    .favorite_border,color: Color.fromARGB(255, 166, 166, 166),
-                    //color: Color.fromARGB(255, 253, 253, 253),
+              Container(
+                  width: 110,
+                  height: 30,
+                  decoration: BoxDecoration(
+                   /*  border: Border.all(
+                       color: Color.fromARGB(255, 255, 0, 0),  width: 2
+                        // Ajoute une bordure rouge
+                        ), */
+                    borderRadius: BorderRadius.circular(40),
+                    boxShadow: [
+                      /*  BoxShadow(
+        color: Colors.black.withOpacity(0.5),
+        spreadRadius: 2,
+        blurRadius: 5,
+        offset: Offset(0, 2),
+      ), */
+                    ],
                   ),
-                  SizedBox(
-                      width:
-                          8), // Ajoute un espacement entre l'icône et le texte
-                  Text('Favorites',
-                      style: TextStyle(
-  fontFamily: 'Open Sans',
-  fontWeight: FontWeight.bold,
-  color: Color.fromARGB(255, 11, 11, 11),shadows: [
-      Shadow(
+                  child: Material(
+                      color: Color.fromARGB(255, 255, 255, 255),
+                      elevation: 3,
+                      borderRadius: BorderRadius.circular(40),
+                      child: Row(
+                        children: [
+                          SizedBox(
+                            width: 2.w,
+                          ),
+                          Icon(
+                            Icons.favorite_border,
+                            color: Color.fromARGB(255, 212, 32, 32),
+                            //color: Color.fromARGB(255, 253, 253, 253),
+                          ),
+                          SizedBox(
+                              width:
+                                  8), // Ajoute un espacement entre l'icône et le texte
+                          Text('Favorites',
+                              style: TextStyle(
+                                fontFamily: 'Open Sans',
+                                fontWeight: FontWeight.bold,
+                                color: Color.fromARGB(255, 0, 0, 0),
+                                shadows: [
+                                  /*  Shadow(
         color: Colors.grey,
         offset: Offset(0, 2),
         blurRadius: 2,
-      ),
-    ],
-)),
-                ],
-            )  ,
+      ), */
+                                ],
+                              )),
+                        ],
+                      ))),
             ],
           ),
         ),
@@ -58,39 +82,64 @@ class HeaderWebMenu extends StatelessWidget {
         ),
         HeaderMenu(
           press: () {
-             Navigator.push(
+            Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) =>const About(),
+                builder: (context) => const About(),
               ),
-            ); },
+            );
+          },
           title: Column(
             children: [
-              Row(
-                children: const [
-                  Icon(
-                    Icons.info,color: Color.fromARGB(255, 166, 166, 166),
-                    //color: Color.fromARGB(255, 255, 255, 255,),
+              Container(
+                  width: 110,
+                  height: 30,
+                  decoration: BoxDecoration(
+                   /*  border: Border.all(
+                       color: Color.fromARGB(255, 255, 0, 0),  width: 2
+                        // Ajoute une bordure rouge
+                        ), */
+                    borderRadius: BorderRadius.circular(40),
+                    boxShadow: [
+                      /*  BoxShadow(
+        color: Colors.black.withOpacity(0.5),
+        spreadRadius: 2,
+        blurRadius: 5,
+        offset: Offset(0, 2),
+      ), */
+                    ],
                   ),
-                  SizedBox(
-                      width:
-                          8), // Ajoute un espacement entre l'icône et le texte
-                  Text(
-                    "About",
-                      style: TextStyle(
-  fontFamily: 'Open Sans',
-  fontWeight: FontWeight.bold,
-  color: Color.fromARGB(255, 11, 11, 11),shadows: [
-      Shadow(
+                  child: Material(
+                      color: Color.fromARGB(255, 255, 255, 255),
+                      elevation: 3,
+                      borderRadius: BorderRadius.circular(40),
+                      child: Row(
+                        children: [
+                          SizedBox(
+                            width: 2.w,
+                          ),
+                          Icon(
+                            Icons.info,color: Color.fromARGB(255, 212, 32, 32),
+                            //color: Color.fromARGB(255, 255, 255, 255,),
+                          ),
+                          SizedBox(
+                              width:
+                                  8), // Ajoute un espacement entre l'icône et le texte
+                          Text("About",
+                              style: TextStyle(
+                                fontFamily: 'Open Sans',
+                                fontWeight: FontWeight.bold,
+                                color: Color.fromARGB(255, 0, 0, 0),
+                                shadows: [
+                                  /* Shadow(
         color: Colors.grey,
         offset: Offset(0, 2),
         blurRadius: 2,
-      ),
-    ],
-)
-                  ),
-                ],
-              ),
+      ), */
+                                ],
+                              )),
+                        ],
+                      ))),
             ],
           ),
         ),
@@ -98,33 +147,60 @@ class HeaderWebMenu extends StatelessWidget {
           width: kPadding,
         ),
         HeaderMenu(
-          press: () {   Navigator.pushNamed(
-                                              context, '/Boutiques');},
+          press: () {
+            Navigator.pushNamed(context, '/Boutiques');
+          },
           title: Column(
             children: [
-              Row(
-                children: const [
-                  Icon(
-                    Icons.store,color: Color.fromARGB(255, 166, 166, 166),
-                    // color: Color.fromARGB(255, 255, 255, 255,)
+              Container(
+                  width: 110,
+                  height: 30,
+                  decoration: BoxDecoration(
+                  /*   border: Border.all(
+                        color: Color.fromARGB(255, 255, 0, 0),  width: 2
+                        // Ajoute une bordure rouge
+                        ), */
+                    borderRadius: BorderRadius.circular(40),
+                    boxShadow: [
+                      /*  BoxShadow(
+        color: Colors.black.withOpacity(0.5),
+        spreadRadius: 2,
+        blurRadius: 5,
+        offset: Offset(0, 2),
+      ), */
+                    ],
                   ),
-                  SizedBox(
-                      width:
-                          8), // Ajoute un espacement entre l'icône et le texte
-                  Text('Agency',
-                      style: TextStyle(
-  fontFamily: 'Open Sans',
-  fontWeight: FontWeight.bold,
-  color: Color.fromARGB(255, 11, 11, 11),shadows: [
-      Shadow(
+                  child: Material(
+                      color: Color.fromARGB(255, 255, 255, 255),
+                      elevation: 3,
+                      borderRadius: BorderRadius.circular(40),
+                      child: Row(
+                        children: [
+                          SizedBox(
+                            width: 2.w,
+                          ),
+                          Icon(
+                            Icons.store, color: Color.fromARGB(255, 212, 32, 32),
+                            // color: Color.fromARGB(255, 255, 255, 255,)
+                          ),
+                          SizedBox(
+                              width:
+                                  8), // Ajoute un espacement entre l'icône et le texte
+                          Text('Agency',
+                              style: TextStyle(
+                                fontFamily: 'Open Sans',
+                                fontWeight: FontWeight.bold,
+                                color: Color.fromARGB(255, 0, 0, 0),
+                                shadows: [
+                                  /*  Shadow(
         color: Colors.grey,
         offset: Offset(0, 2),
         blurRadius: 2,
-      ),
-    ],
-)),
-                ],
-              ),
+      ), */
+                                ],
+                              )),
+                        ],
+                      ))),
             ],
           ),
         ),
@@ -144,28 +220,55 @@ class HeaderWebMenu extends StatelessWidget {
           },
           title: Column(
             children: [
-              Row(
-                children: const [
-                  Icon(Icons.phone,color: Color.fromARGB(255, 166, 166, 166),
-                      //,color: Color.fromARGB(255, 255, 255, 255,)
-                      ),
-                  SizedBox(
-                      width:
-                          8), // Ajoute un espacement entre l'icône et le texte
-                  Text('Contact',
-                      style: TextStyle(
-  fontFamily: 'Open Sans',
-  fontWeight: FontWeight.bold,
-  color: Color.fromARGB(255, 11, 11, 11),shadows: [
-      Shadow(
+              Container(
+                  width: 110,
+                  height: 30,
+                  decoration: BoxDecoration(
+                   /*  border: Border.all(
+                        color: Color.fromARGB(255, 255, 0, 0),  width: 2
+                        // Ajoute une bordure rouge
+                        ), */
+                    borderRadius: BorderRadius.circular(40),
+                    boxShadow: [
+                      /*  BoxShadow(
+        color: Colors.black.withOpacity(0.5),
+        spreadRadius: 2,
+        blurRadius: 5,
+        offset: Offset(0, 2),
+      ), */
+                    ],
+                  ),
+                  child: Material(
+                      color: Color.fromARGB(255, 255, 255, 255),
+                      elevation: 3,
+                      borderRadius: BorderRadius.circular(40),
+                      child: Row(
+                        children: [
+                          SizedBox(
+                            width: 2.w,
+                          ),
+                          Icon(
+                            Icons.phone,color: Color.fromARGB(255, 212, 32, 32),
+                            //,color: Color.fromARGB(255, 255, 255, 255,)
+                          ),
+                          SizedBox(
+                              width:
+                                  8), // Ajoute un espacement entre l'icône et le texte
+                          Text('Contact',
+                              style: TextStyle(
+                                fontFamily: 'Open Sans',
+                                fontWeight: FontWeight.bold,
+                                color: Color.fromARGB(255, 0, 0, 0),
+                                shadows: [
+                                  /* Shadow(
         color: Colors.grey,
         offset: Offset(0, 2),
         blurRadius: 2,
-      ),
-    ],
-)),
-                ],
-              ),
+      ), */
+                                ],
+                              )),
+                        ],
+                      ))),
             ],
           ),
         ),
@@ -186,29 +289,57 @@ class HeaderWebMenu extends StatelessWidget {
           },
           title: Column(
             children: [
-              Row(
-                children: const [
-                  Icon(
-                    Icons.person_add,color: Color.fromARGB(255, 166, 166, 166),
-                    //color: Color.fromARGB(255, 255, 255, 255,)
+              Container(
+                  width: 110,
+                  height: 30,
+                  decoration: BoxDecoration(
+                   /*  border: Border.all(
+                        color: Color.fromARGB(255, 255, 0, 0), width: 2
+                        // Ajoute une bordure rouge
+                        ), */
+                    borderRadius: BorderRadius.circular(40),
+                    boxShadow: [
+                      /*  BoxShadow(
+        color: Colors.black.withOpacity(0.5),
+        spreadRadius: 2,
+        blurRadius: 5,
+        offset: Offset(0, 2),
+      ), */
+                    ],
                   ),
-                  SizedBox(
-                      width:
-                          8), // Ajoute un espacement entre l'icône et le texte
-                  Text("Sign up",
-                      style: TextStyle(
-  fontFamily: 'Open Sans',
-  fontWeight: FontWeight.bold,
-  color: Color.fromARGB(255, 11, 11, 11),shadows: [
-      Shadow(
+                  child: Material(
+                      color: Color.fromARGB(255, 255, 255, 255),
+                      elevation: 3,
+                      borderRadius: BorderRadius.circular(40),
+                      child: Center(
+                          child: Row(
+                        children: [
+                          SizedBox(
+                            width: 2.w,
+                          ),
+                          Icon(
+                            Icons.person_add,
+                            color:  Color.fromARGB(255, 212, 32, 32),
+                            //color: Color.fromARGB(255, 255, 255, 255,)
+                          ),
+                          SizedBox(
+                              width:
+                                  8), // Ajoute un espacement entre l'icône et le texte
+                          Text("Sign up",
+                              style: TextStyle(
+                                fontFamily: 'Open Sans',
+                                fontWeight: FontWeight.bold,
+                                color: Color.fromARGB(255, 0, 0, 0),
+                                shadows: [
+                                  /*  Shadow(
         color: Colors.grey,
         offset: Offset(0, 2),
         blurRadius: 2,
-      ),
-    ],
-)),
-                ],
-              ),
+      ), */
+                                ],
+                              )),
+                        ],
+                      )))),
             ],
           ),
         ),
@@ -227,28 +358,30 @@ class MobFooterMenu extends StatelessWidget {
     return Wrap(
       children: [
         HeaderMenu(
-          press: ()  {
-              Navigator.pushNamed(
-                                              context, '/Favoris');
+          press: () {
+            Navigator.pushNamed(context, '/Favoris');
           },
           title: Column(
             children: [
               Row(
                 children: [
-                  Icon(Icons.favorite,color: Color.fromARGB(255, 166, 166, 166),
-                      ), // Ajoute un espacement entre l'icône et le texte
+                  Icon(
+                    Icons.favorite,
+                    color: Color.fromARGB(255, 166, 166, 166),
+                  ), // Ajoute un espacement entre l'icône et le texte
                   Text('Favorites',
                       style: TextStyle(
-  fontFamily: 'Open Sans',
-  fontWeight: FontWeight.bold,
-  color: Color.fromARGB(255, 11, 11, 11),shadows: [
-      Shadow(
-        color: Colors.grey,
-        offset: Offset(0, 2),
-        blurRadius: 2,
-      ),
-    ],
-)),
+                        fontFamily: 'Open Sans',
+                        fontWeight: FontWeight.bold,
+                        color: Color.fromARGB(255, 11, 11, 11),
+                        shadows: [
+                          Shadow(
+                            color: Colors.grey,
+                            offset: Offset(0, 2),
+                            blurRadius: 2,
+                          ),
+                        ],
+                      )),
                 ],
               ),
             ],
@@ -263,23 +396,26 @@ class MobFooterMenu extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  Icon(Icons.info,
-                      color: Color.fromARGB(255, 166, 166, 166),),
+                  Icon(
+                    Icons.info,
+                    color: Color.fromARGB(255, 166, 166, 166),
+                  ),
                   SizedBox(
                       width:
                           8), // Ajoute un espacement entre l'icône et le texte
                   Text("About",
                       style: TextStyle(
-  fontFamily: 'Open Sans',
-  fontWeight: FontWeight.bold,
-  color: Color.fromARGB(255, 11, 11, 11),shadows: [
-      Shadow(
-        color: Colors.grey,
-        offset: Offset(0, 2),
-        blurRadius: 2,
-      ),
-    ],
-)),
+                        fontFamily: 'Open Sans',
+                        fontWeight: FontWeight.bold,
+                        color: Color.fromARGB(255, 11, 11, 11),
+                        shadows: [
+                          Shadow(
+                            color: Colors.grey,
+                            offset: Offset(0, 2),
+                            blurRadius: 2,
+                          ),
+                        ],
+                      )),
                 ],
               ),
             ],
@@ -290,31 +426,32 @@ class MobFooterMenu extends StatelessWidget {
         ),
         HeaderMenu(
           press: () {
-           
-               Navigator.pushNamed(
-                                              context, '/Boutiques');
-            
+            Navigator.pushNamed(context, '/Boutiques');
           },
           title: Column(
             children: [
               Row(
                 children: [
-                  Icon(Icons.store,color: Color.fromARGB(255, 166, 166, 166),),
+                  Icon(
+                    Icons.store,
+                    color: Color.fromARGB(255, 166, 166, 166),
+                  ),
                   SizedBox(
                       width:
                           8), // Ajoute un espacement entre l'icône et le texte
                   Text('Agency',
                       style: TextStyle(
-  fontFamily: 'Open Sans',
-  fontWeight: FontWeight.bold,
-  color: Color.fromARGB(255, 11, 11, 11),shadows: [
-      Shadow(
-        color: Colors.grey,
-        offset: Offset(0, 2),
-        blurRadius: 2,
-      ),
-    ],
-)),
+                        fontFamily: 'Open Sans',
+                        fontWeight: FontWeight.bold,
+                        color: Color.fromARGB(255, 11, 11, 11),
+                        shadows: [
+                          Shadow(
+                            color: Colors.grey,
+                            offset: Offset(0, 2),
+                            blurRadius: 2,
+                          ),
+                        ],
+                      )),
                 ],
               ),
             ],
@@ -338,22 +475,26 @@ class MobFooterMenu extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  Icon(Icons.phone,color: Color.fromARGB(255, 166, 166, 166),),
+                  Icon(
+                    Icons.phone,
+                    color: Color.fromARGB(255, 166, 166, 166),
+                  ),
                   SizedBox(
                       width:
                           8), // Ajoute un espacement entre l'icône et le texte
                   Text('Contact',
                       style: TextStyle(
-  fontFamily: 'Open Sans',
-  fontWeight: FontWeight.bold,
-  color: Color.fromARGB(255, 11, 11, 11),shadows: [
-      Shadow(
-        color: Colors.grey,
-        offset: Offset(0, 2),
-        blurRadius: 2,
-      ),
-    ],
-)),
+                        fontFamily: 'Open Sans',
+                        fontWeight: FontWeight.bold,
+                        color: Color.fromARGB(255, 11, 11, 11),
+                        shadows: [
+                          Shadow(
+                            color: Colors.grey,
+                            offset: Offset(0, 2),
+                            blurRadius: 2,
+                          ),
+                        ],
+                      )),
                 ],
               ),
             ],
@@ -378,22 +519,26 @@ class MobFooterMenu extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  Icon(Icons.person_add,color: Color.fromARGB(255, 166, 166, 166),),
+                  Icon(
+                    Icons.person_add,
+                    color: Color.fromARGB(255, 166, 166, 166),
+                  ),
                   SizedBox(
                       width:
                           8), // Ajoute un espacement entre l'icône et le texte
                   Text("Sign up",
                       style: TextStyle(
-  fontFamily: 'Open Sans',
-  fontWeight: FontWeight.bold,
-  color: Color.fromARGB(255, 11, 11, 11),shadows: [
-      Shadow(
-        color: Colors.grey,
-        offset: Offset(0, 2),
-        blurRadius: 2,
-      ),
-    ],
-)),
+                        fontFamily: 'Open Sans',
+                        fontWeight: FontWeight.bold,
+                        color: Color.fromARGB(255, 11, 11, 11),
+                        shadows: [
+                          Shadow(
+                            color: Colors.grey,
+                            offset: Offset(0, 2),
+                            blurRadius: 2,
+                          ),
+                        ],
+                      )),
                 ],
               ),
             ],
@@ -445,113 +590,120 @@ class _MobMenuState extends State<MobMenu> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           HeaderMenu(
-            press: ()  {
-             Navigator.pushNamed(
-                                              context, '/Favoris');
+            press: () {
+              Navigator.pushNamed(context, '/Favoris');
             },
             title: Column(
               children: [
-                 Container(
-                margin: EdgeInsets.all(8),
-                child: 
-                Row(
-                  children: [
-                    Icon(Icons.favorite_border,color: Color.fromARGB(255, 153, 153, 153),),
-                    SizedBox(
-                        width:
-                            10.w), // Ajoute un espacement entre l'icône et le texte
-                    Text('Favorites',
-                      style: TextStyle(
-  fontFamily: 'Open Sans',
-  fontWeight: FontWeight.bold,
-  fontSize: 18.sp,
-  color: Color.fromARGB(255, 11, 11, 11),shadows: [
-      Shadow(
-        color: Colors.grey,
-        offset: Offset(0, 2),
-        blurRadius: 2,
-      ),
-    ],
-)),
-                  ],
-                   )  ),
+                Container(
+                    margin: EdgeInsets.all(8),
+                    child: Row(
+                      children: [
+                        Icon(
+                          Icons.favorite_border,
+                          color: Color.fromARGB(255, 153, 153, 153),
+                        ),
+                        SizedBox(
+                            width: 10
+                                .w), // Ajoute un espacement entre l'icône et le texte
+                        Text('Favorites',
+                            style: TextStyle(
+                              fontFamily: 'Open Sans',
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18.sp,
+                              color: Color.fromARGB(255, 11, 11, 11),
+                              shadows: [
+                                Shadow(
+                                  color: Colors.grey,
+                                  offset: Offset(0, 2),
+                                  blurRadius: 2,
+                                ),
+                              ],
+                            )),
+                      ],
+                    )),
               ],
             ),
           ),
           SizedBox(
             height: 10,
           ),
-         
           HeaderMenu(
             press: () {},
             title: Column(
               children: [
-                 Container(
-                margin: EdgeInsets.all(8),
-                child: 
-                Row(
-                  children: [
-                    Icon(Icons.info,color: Color.fromARGB(255, 153, 153, 153),),
-                    SizedBox(
-                        width:
-                            8), // Ajoute un espacement entre l'icône et le texte
-                    Text("About",
-                      style: TextStyle(
-  fontFamily: 'Open Sans',
-  fontWeight: FontWeight.bold,
-  fontSize: 18.sp,
-  color: Color.fromARGB(255, 11, 11, 11),shadows: [
-      Shadow(
-        color: Colors.grey,
-        offset: Offset(0, 2),
-        blurRadius: 2,
-      ),
-    ],
-)),
-                  ],
-                  ) ),
+                Container(
+                    margin: EdgeInsets.all(8),
+                    child: Row(
+                      children: [
+                        Icon(
+                          Icons.info,
+                          color: Color.fromARGB(255, 153, 153, 153),
+                        ),
+                        SizedBox(
+                            width:
+                                8), // Ajoute un espacement entre l'icône et le texte
+                        Text("About",
+                            style: TextStyle(
+                              fontFamily: 'Open Sans',
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18.sp,
+                              color: Color.fromARGB(255, 11, 11, 11),
+                              shadows: [
+                                Shadow(
+                                  color: Colors.grey,
+                                  offset: Offset(0, 2),
+                                  blurRadius: 2,
+                                ),
+                              ],
+                            )),
+                      ],
+                    )),
               ],
             ),
           ),
           SizedBox(
             height: 10,
           ),
-        
           HeaderMenu(
-            press: () {     Navigator.pushNamed(
-                                              context, '/Boutiques');},
+            press: () {
+              Navigator.pushNamed(context, '/Boutiques');
+            },
             title: Column(
               children: [
-                 Container(
-                margin: EdgeInsets.all(8),
-                child: 
-                Row(
-                  children: [
-                    Icon(Icons.store,color: Color.fromARGB(255, 153, 153, 153),),
-                    SizedBox(
-                        width:
-                            8), // Ajoute un espacement entre l'icône et le texte
-                    Text('Agency',
-                      style: TextStyle(
-  fontFamily: 'Open Sans',
-  fontWeight: FontWeight.bold,fontSize: 18.sp,
-  color: Color.fromARGB(255, 11, 11, 11),shadows: [
-      Shadow(
-        color: Colors.grey,
-        offset: Offset(0, 2),
-        blurRadius: 2,
-      ),
-    ],
-)),
-                  ],
-                  ) ),
+                Container(
+                    margin: EdgeInsets.all(8),
+                    child: Row(
+                      children: [
+                        Icon(
+                          Icons.store,
+                          color: Color.fromARGB(255, 153, 153, 153),
+                        ),
+                        SizedBox(
+                            width:
+                                8), // Ajoute un espacement entre l'icône et le texte
+                        Text('Agency',
+                            style: TextStyle(
+                              fontFamily: 'Open Sans',
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18.sp,
+                              color: Color.fromARGB(255, 11, 11, 11),
+                              shadows: [
+                                Shadow(
+                                  color: Colors.grey,
+                                  offset: Offset(0, 2),
+                                  blurRadius: 2,
+                                ),
+                              ],
+                            )),
+                      ],
+                    )),
               ],
             ),
           ),
           SizedBox(
             height: 10,
           ),
-         
           HeaderMenu(
             press: () async {
               var url = "https://www.3t.tn/contact";
@@ -565,36 +717,39 @@ class _MobMenuState extends State<MobMenu> {
             },
             title: Column(
               children: [
-                 Container(
-                margin: EdgeInsets.all(8),
-                child: 
-                Row(
-                  children: [
-                    Icon(Icons.phone,color: Color.fromARGB(255, 153, 153, 153),),
-                    SizedBox(
-                        width:
-                            8), // Ajoute un espacement entre l'icône et le texte
-                    Text('Contact',
-                      style: TextStyle(
-  fontFamily: 'Open Sans',
-  fontWeight: FontWeight.bold,fontSize: 18.sp,
-  color: Color.fromARGB(255, 11, 11, 11),shadows: [
-      Shadow(
-        color: Colors.grey,
-        offset: Offset(0, 2),
-        blurRadius: 2,
-      ),
-    ],
-)),
-                  ],
-                 )),
+                Container(
+                    margin: EdgeInsets.all(8),
+                    child: Row(
+                      children: [
+                        Icon(
+                          Icons.phone,
+                          color: Color.fromARGB(255, 153, 153, 153),
+                        ),
+                        SizedBox(
+                            width:
+                                8), // Ajoute un espacement entre l'icône et le texte
+                        Text('Contact',
+                            style: TextStyle(
+                              fontFamily: 'Open Sans',
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18.sp,
+                              color: Color.fromARGB(255, 11, 11, 11),
+                              shadows: [
+                                Shadow(
+                                  color: Colors.grey,
+                                  offset: Offset(0, 2),
+                                  blurRadius: 2,
+                                ),
+                              ],
+                            )),
+                      ],
+                    )),
               ],
             ),
           ),
           SizedBox(
             height: 10,
           ),
-         
           HeaderMenu(
             press: () async {
               var url =
@@ -609,33 +764,37 @@ class _MobMenuState extends State<MobMenu> {
             },
             title: Column(
               children: [
-                  Container(
-                margin: EdgeInsets.all(8),
-                child: 
-                Row(
-                  children: [
-                    Icon(Icons.person_add,color: Color.fromARGB(255, 153, 153, 153),),
-                    SizedBox(
-                        width:
-                            8), // Ajoute un espacement entre l'icône et le texte
-                    Text("Sign up",
-                      style: TextStyle(
-  fontFamily: 'Open Sans',
-  fontWeight: FontWeight.bold,fontSize: 18.sp,
-  color: Color.fromARGB(255, 11, 11, 11),shadows: [
-      Shadow(
-        color: Colors.grey,
-        offset: Offset(0, 2),
-        blurRadius: 2,
-      ),
-    ],
-)),
-                   /*  Divider(
+                Container(
+                    margin: EdgeInsets.all(8),
+                    child: Row(
+                      children: [
+                        Icon(
+                          Icons.person_add,
+                          color: Color.fromARGB(255, 153, 153, 153),
+                        ),
+                        SizedBox(
+                            width:
+                                8), // Ajoute un espacement entre l'icône et le texte
+                        Text("Sign up",
+                            style: TextStyle(
+                              fontFamily: 'Open Sans',
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18.sp,
+                              color: Color.fromARGB(255, 11, 11, 11),
+                              shadows: [
+                                Shadow(
+                                  color: Colors.grey,
+                                  offset: Offset(0, 2),
+                                  blurRadius: 2,
+                                ),
+                              ],
+                            )),
+                        /*  Divider(
                       color: Colors.black,
                       thickness: 1.0,
                     ), */
-                  ],
-                    )  ),
+                      ],
+                    )),
               ],
             ),
           ),

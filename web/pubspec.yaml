@@ -51,13 +51,26 @@ dependencies:
   flutter_screenutil: ^5.7.0
   infinite_scroll_pagination: ^3.2.0
   geolocator: ^9.0.2
+  mapbox_gl: ^0.16.0
+  location: ^4.4.0
+  device_info_plus: ^9.0.2
   #js: ^0.6.3
-  google_maps_flutter: ^2.2.8
-  geocoding: ^2.0.0
+  #google_maps_flutter: ^2.2.8
+  #geocoding: ^2.0.0
   #flutter_mapbox_gl: ^0.0.5
-  google_maps: ^6.3.0
-  #google_maps: ">=3.0.0 <4.0.0"
-  #google_maps: ^3.4.1
+  #mapbox_gl: ^0.16.0
+  #google_maps: ^6.3.0
+  #latlong: ^0.6.1
+  #flutter_map: ^4.0.0
+  #google_maps_flutter: ^2.2.8
+  #cached_network_image: ^3.2.3
+  #geocode: ^1.0.3
+  #google_maps: ^6.3.0
+  #latlng: ^1.0.0
+  
+  
+ 
+  
   
   
   

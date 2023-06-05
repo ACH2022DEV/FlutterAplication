@@ -14,7 +14,6 @@ class ProductsPage2 extends StatefulWidget {
   //const ProductsPage({required Key key, required this.products}): super(key: key);
 
   @override
-  
   _ProductsPageState createState() => _ProductsPageState();
 }
 
@@ -68,13 +67,14 @@ class _ProductsPageState extends State<ProductsPage2> {
       //print(jsonData);
 
       products = jsonData
-          .map<HotelsSellers>((json) => HotelsSellers.fromJson(json)).toList();
+          .map<HotelsSellers>((json) => HotelsSellers.fromJson(json))
+          .toList();
       products2 = products;
       print(products2);
-       setState(() {
+      setState(() {
         _loading = false;
         print(_loading);
-      }); 
+      });
       // setState(() {
       //  if (products.isNotEmpty) {
 
@@ -95,8 +95,8 @@ class _ProductsPageState extends State<ProductsPage2> {
       // margin: EdgeInsets.all(40),
 
       child: _loading
-          ? Center(child: CircularProgressIndicator()) 
-        : Row(
+          ? Center(child: CircularProgressIndicator())
+          : Row(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -216,7 +216,7 @@ class _ProductsPageState extends State<ProductsPage2> {
                       //width: double.maxFinite,
                       margin: EdgeInsets.only(top: 50, bottom: 50),
                       padding: const EdgeInsets.all(10),
-                       // height: double.infinity,
+                      // height: double.infinity,
 
                       child: ListView.builder(
                         /*   primary: false,
@@ -232,7 +232,7 @@ class _ProductsPageState extends State<ProductsPage2> {
                           final hotel = products2[index];
                           final response = hotel.data.response;
 
-                       //   print('index $index');
+                          //   print('index $index');
 
                           return ListView.builder(
                               shrinkWrap: true,

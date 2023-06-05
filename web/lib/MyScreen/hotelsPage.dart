@@ -1,11 +1,11 @@
 import 'dart:convert';
 import 'package:intl/intl.dart';
 
- import 'dart:html' as html;
+  import 'dart:html' as html;
  import 'dart:html';
- import 'dart:js' as js; //commented for mobile
-import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:geocoding/geocoding.dart';
+ import 'dart:js' as js;  //commented for mobile
+//import 'package:google_maps_flutter/google_maps_flutter.dart';
+//import 'package:geocoding/geocoding.dart';
 
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
@@ -199,7 +199,7 @@ class _HotelsPageState extends State<HotelsPage> {
   return 'Address not found';
 } */
 
-  String ipLocationForweb = '';
+   String ipLocationForweb = '';
 
   Future<void> getCurrentLocationForweb() async {
     try {
@@ -223,7 +223,7 @@ class _HotelsPageState extends State<HotelsPage> {
     } catch (e) {
       print('Erreur lors de l\'obtention de la localisation : $e');
     }
-  } 
+  }  
  
   Future<String> getIPAddress() async {
     try {
@@ -4814,7 +4814,7 @@ class _HotelsPageState extends State<HotelsPage> {
                                                                                               HotelId = item.hotel.hotelId;
 
                                                                                               print('hotelnameclicked${item.hotel.hotelName}');
-                                                                                                  await getCurrentLocationForweb();
+                                                                                                 await getCurrentLocationForweb();
                                                                                               await createApiProduct();
                                                                                               var url = seller.detailsLink;
                                                                                               if (await canLaunch(url)) {
