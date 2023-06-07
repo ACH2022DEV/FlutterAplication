@@ -20,6 +20,11 @@ class _CarouselState extends State<Carousel> {
      '../../android/app/src/assets/images/myhotel6.jpeg',
      '../../android/app/src/assets/images/myhotel7.jpeg',
      '../../android/app/src/assets/images/myhotel9.jpeg',
+      '../../android/app/src/assets/images/1111.jpg',
+            '../../android/app/src/assets/images/russ.png',
+                  '../../android/app/src/assets/images/slideistanbul.jpg',
+
+
   ];
 
   @override

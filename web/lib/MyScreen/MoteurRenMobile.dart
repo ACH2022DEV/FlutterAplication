@@ -1898,7 +1898,9 @@ class _MyModalMobileState extends State<MyModalMobile> {
            // height: 400,
          //  color: Color.fromARGB(0, 208, 208, 208),
             width: double.infinity,
-            height: double.infinity,
+            height: 610,
+            //version Web
+// height:  double.infinity,
             child:SingleChildScrollView(child:
              Column(
               children: [
@@ -1907,11 +1909,11 @@ class _MyModalMobileState extends State<MyModalMobile> {
          //   color: Color.fromARGB(255, 255, 255, 255),
          color: Color.fromARGB(255, 255, 255, 255),
 
-         borderRadius: BorderRadius.vertical(
+        /*  borderRadius: BorderRadius.vertical(
           top: Radius.circular(16.0), // Arrondit les coins supérieurs
-        ),  boxShadow: [
+        ), */  boxShadow: [
               BoxShadow(
-                color: Colors.grey.withOpacity(0.8),
+                color: Color.fromARGB(255, 190, 190, 190).withOpacity(0.8),
                 spreadRadius: 2,
                 blurRadius: 5,
                 offset: Offset(0, 2), // Offset in the downward direction

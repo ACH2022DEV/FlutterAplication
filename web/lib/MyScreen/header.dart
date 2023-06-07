@@ -26,14 +26,19 @@ class Header extends StatelessWidget {
                   onPressed: () {
                     Scaffold.of(context).openDrawer();
                   },
-                  icon: Icon(Icons.menu,weight: 50,))),),
+                  icon: Icon(Icons.menu,weight: 50,color: Color.fromARGB(255, 255, 255, 255),))),),
        //  if (Responsive.isDesktop(context))
     //Icon(Icons.dashboard,weight: 25,), 
         SizedBox(width: 20.sp,),
         if(Responsive.isMobile(context))
         Row(children: [
-          
-         Text(
+          Image.asset(
+                'images/logos.png',
+               width: 200,
+               height: 50,
+               
+              ),  
+        /*  Text(
           "3T",
           style: TextStyle(
               fontSize: 25.0,
@@ -63,16 +68,16 @@ class Header extends StatelessWidget {
         offset: Offset(2, 2),
         blurRadius: 3,
       ),
-    ],),),
+    ],),), */
     
     
     
     ],),
     if(!Responsive.isMobile(context))
          Image.asset(
-                '../../android/app/src/assets/images/3TLOGO.png',
-               width: 200,
-               height: 22,
+                '../../android/app/src/assets/images/logos.png',
+               width: 300,
+               height: 35,
                
               ),  
         Spacer(),

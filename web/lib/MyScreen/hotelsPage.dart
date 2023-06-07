@@ -1,11 +1,11 @@
 import 'dart:convert';
 import 'package:intl/intl.dart';
 
-  import 'dart:html' as html;
- import 'dart:html';
- import 'dart:js' as js;  //commented for mobile
+import 'dart:html' as html;
+import 'dart:html';
+import 'dart:js' as js; //commented for mobile
 //import 'package:google_maps_flutter/google_maps_flutter.dart';
-//import 'package:geocoding/geocoding.dart';
+import 'package:geocoding/geocoding.dart';
 
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
@@ -58,6 +58,7 @@ class _HotelsPageState extends State<HotelsPage> {
     saveCheckInOutDates();
   }
 
+  bool showRatings = false;
   String Nbchambres = '';
   int numberOfDays = 0;
   String destination = '';
@@ -78,6 +79,8 @@ class _HotelsPageState extends State<HotelsPage> {
     print('numberOfDays$numberOfDays');
     Nbchambres = prefs.getString('chambre') ?? '';
   }
+
+  List<int> ratingOptions = [1, 2, 3, 4, 5];
 
   String inputValue = '';
   List<Hotels> filteredHotels = [];
@@ -137,6 +140,35 @@ class _HotelsPageState extends State<HotelsPage> {
     }
   }
 
+  int selectedRating = 0;
+
+  void showRatingModal(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      builder: (BuildContext context) {
+        return Container(
+          // Contenu du modal, par exemple, une ListView.builder pour afficher les options de notation
+          child: ListView.builder(
+            itemCount: 5, // Supposons que vous ayez 5 options de notation
+            itemBuilder: (context, index) {
+              int rating = index + 1;
+              return ListTile(
+                title: Text('$rating'),
+                onTap: () {
+                  setState(() {
+                    selectedRating =
+                        rating; // Mettre à jour la valeur sélectionnée
+                  });
+                  Navigator.pop(context); // Fermer le modal
+                },
+              );
+            },
+          ),
+        );
+      },
+    );
+  }
+
   Future<void> filtreByRating(double rating) async {
     final prefs = await SharedPreferences.getInstance();
     List<String> hotelsJsonList = prefs.getStringList('products') ?? [];
@@ -175,7 +207,82 @@ class _HotelsPageState extends State<HotelsPage> {
     }
   }
 
+  Future<void> filtreByPriceLowtohight() async {
+    final prefs = await SharedPreferences.getInstance();
+    List<String> hotelsJsonList = prefs.getStringList('products') ?? [];
+
+    final hotelsList = hotelsJsonList
+        .map((hotelJson) => Hotels.fromJson(json.decode(hotelJson)))
+        .toList();
+    //filteredHotels.clear();
+    List<Hotels> filteredHotelsSellers = [];
+
+    for (Hotels hotelSeller in hotelsList) {
+      filteredHotels = hotelSeller
+          .filterHotelsByPriceLowTohightHight(hotelsList.cast<Hotels>())
+          .toList();
+
+      if (filteredHotels.isNotEmpty) {
+        filteredHotels.addAll(filteredHotelsSellers);
+        print('_data123$_data');
+
+        List<String> productsJsonList = filteredHotels
+            .map((product) => json.encode(product.toJson()))
+            .toList();
+        List<String> hotelsSessionList =
+            prefs.getStringList('productsFiltrer') ?? [];
+        if (hotelsSessionList.isNotEmpty) {
+          prefs.remove('productsFiltrer');
+        }
+        prefs.setStringList('productsFiltrer', productsJsonList);
+
+        setState(() {
+          name = false;
+          view = false;
+          Rating = true;
+        });
+      }
+    }
+  }
 //end
+
+  Future<void> filterHotelsByPriceHighToLow() async {
+    final prefs = await SharedPreferences.getInstance();
+    List<String> hotelsJsonList = prefs.getStringList('products') ?? [];
+
+    final hotelsList = hotelsJsonList
+        .map((hotelJson) => Hotels.fromJson(json.decode(hotelJson)))
+        .toList();
+    //filteredHotels.clear();
+    List<Hotels> filteredHotelsSellers = [];
+
+    for (Hotels hotelSeller in hotelsList) {
+      filteredHotels = hotelSeller
+          .filterHotelsByPriceHighToLow(hotelsList.cast<Hotels>())
+          .toList();
+
+      if (filteredHotels.isNotEmpty) {
+        filteredHotels.addAll(filteredHotelsSellers);
+        print('_data123$_data');
+
+        List<String> productsJsonList = filteredHotels
+            .map((product) => json.encode(product.toJson()))
+            .toList();
+        List<String> hotelsSessionList =
+            prefs.getStringList('productsFiltrer') ?? [];
+        if (hotelsSessionList.isNotEmpty) {
+          prefs.remove('productsFiltrer');
+        }
+        prefs.setStringList('productsFiltrer', productsJsonList);
+
+        setState(() {
+          name = false;
+          view = false;
+          Rating = true;
+        });
+      }
+    }
+  }
 
   List<bool> favoriteStatusList = [];
   List<bool> isExtraFeaturesList = [];
@@ -199,7 +306,7 @@ class _HotelsPageState extends State<HotelsPage> {
   return 'Address not found';
 } */
 
-   String ipLocationForweb = '';
+  String ipLocationForweb = '';
 
   Future<void> getCurrentLocationForweb() async {
     try {
@@ -223,8 +330,8 @@ class _HotelsPageState extends State<HotelsPage> {
     } catch (e) {
       print('Erreur lors de l\'obtention de la localisation : $e');
     }
-  }  
- 
+  }
+
   Future<String> getIPAddress() async {
     try {
       var response =
@@ -390,6 +497,7 @@ class _HotelsPageState extends State<HotelsPage> {
             ? PreferredSize(
                 preferredSize: Size.fromHeight(62.h),
                 child: AppBar(
+                  backgroundColor: Color.fromARGB(255, 217, 35, 35),
                   title: Container(
                     child: SafeArea(
                         child: Column(
@@ -403,14 +511,15 @@ class _HotelsPageState extends State<HotelsPage> {
                             child: Text(
                           '$destination',
                           style: TextStyle(
-                              color: Colors.black,
+                              color: Color.fromARGB(255, 255, 255, 255),
                               fontWeight: FontWeight.bold,
                               fontSize: 16.sp),
                         )),
                         Text(
                           '$formattedCheckin' + '-' + '$formattedCheckout ',
-                          style:
-                              TextStyle(color: Colors.black, fontSize: 16.sp),
+                          style: TextStyle(
+                              color: Color.fromARGB(255, 255, 255, 255),
+                              fontSize: 16.sp),
                         ),
                         SizedBox(
                           height: 1.h,
@@ -429,7 +538,8 @@ class _HotelsPageState extends State<HotelsPage> {
                                       color: Color.fromARGB(255, 255, 255, 255),
                                       borderRadius: BorderRadius.circular(10),
                                       border: Border.all(
-                                        color: Colors.grey,
+                                        color:
+                                            Color.fromARGB(255, 255, 255, 255),
                                         width: 1.0,
                                       ),
                                       /*  boxShadow: [
@@ -453,8 +563,7 @@ class _HotelsPageState extends State<HotelsPage> {
                                         Text(
                                           'Filters',
                                           style: TextStyle(
-                                            color:
-                                                Color.fromARGB(255, 60, 60, 60),
+                                            color: Color.fromARGB(255, 0, 0, 0),
                                             fontSize: 16.sp,
                                             fontWeight: FontWeight.normal,
                                           ),
@@ -473,7 +582,8 @@ class _HotelsPageState extends State<HotelsPage> {
                                       color: Color.fromARGB(255, 255, 255, 255),
                                       borderRadius: BorderRadius.circular(10),
                                       border: Border.all(
-                                        color: Colors.grey,
+                                        color:
+                                            Color.fromARGB(255, 255, 255, 255),
                                         width: 1.0,
                                       ),
                                       /*  boxShadow: [
@@ -489,19 +599,25 @@ class _HotelsPageState extends State<HotelsPage> {
                                       children: [
                                         Icon(
                                           Icons.attach_money,
-                                          color: Colors.black,
+                                          color: Color.fromARGB(255, 0, 0, 0),
                                           size: 16.sp,
                                         ),
                                         SizedBox(width: 5),
-                                        Text(
-                                          'Price low to high',
-                                          style: TextStyle(
-                                            color:
-                                                Color.fromARGB(255, 60, 60, 60),
-                                            fontSize: 16.sp,
-                                            fontWeight: FontWeight.normal,
-                                          ),
-                                        ),
+                                        GestureDetector(
+                                            onTap: () async {
+                                              filtreByPriceLowtohight();
+                                              // Utilisez la liste triée dans votre application Flutter
+                                              // Par exemple, vous pouvez les afficher dans une ListView.builder
+                                            },
+                                            child: Text(
+                                              'Price low to high',
+                                              style: TextStyle(
+                                                color: Color.fromARGB(
+                                                    255, 0, 0, 0),
+                                                fontSize: 16.sp,
+                                                fontWeight: FontWeight.normal,
+                                              ),
+                                            )),
                                       ],
                                     )),
                               ),
@@ -512,14 +628,14 @@ class _HotelsPageState extends State<HotelsPage> {
                                 height: 10.h,
                                 width: 100.w,
                                 child: DecoratedBox(
-                                    decoration: BoxDecoration(
+                                  decoration: BoxDecoration(
+                                    color: Color.fromARGB(255, 255, 255, 255),
+                                    borderRadius: BorderRadius.circular(10),
+                                    border: Border.all(
                                       color: Color.fromARGB(255, 255, 255, 255),
-                                      borderRadius: BorderRadius.circular(10),
-                                      border: Border.all(
-                                        color: Colors.grey,
-                                        width: 1.0,
-                                      ),
-                                      /*  boxShadow: [
+                                      width: 1.0,
+                                    ),
+                                    /*  boxShadow: [
         BoxShadow(
           color: Colors.grey.withOpacity(0.5),
           spreadRadius: 2,
@@ -527,8 +643,8 @@ class _HotelsPageState extends State<HotelsPage> {
           offset: Offset(0, 3), // Décalage de l'ombre vers le bas
         ),
       ], */
-                                    ),
-                                    child: Row(
+                                  ),
+                                  /*   child: Row(
                                       children: [
                                         Icon(
                                           Icons.star,
@@ -536,17 +652,80 @@ class _HotelsPageState extends State<HotelsPage> {
                                           size: 16.sp,
                                         ),
                                         SizedBox(width: 5),
-                                        Text(
+                                     GestureDetector(
+  onTap: () {
+    showRatingModal(context); // Afficher le modal des options de notation
+  }, child:  Text(
                                           'Rating',
                                           style: TextStyle(
-                                            color:
-                                                Color.fromARGB(255, 60, 60, 60),
+                                            color: Color.fromARGB(255, 0, 0, 0),
                                             fontSize: 16.sp,
                                             fontWeight: FontWeight.normal,
                                           ),
-                                        ),
+                                      ) ),
                                       ],
-                                    )),
+                                    ) */
+                                  /*  child: PopupMenuButton<int>(
+                                      itemBuilder: (context) {
+                                        return ratingOptions.map((int rating) {
+                                          return PopupMenuItem<int>(
+                                            value: rating,
+                                           
+                                                child: Row(
+                                              children: [
+                                                Icon(
+                                                  Icons.star,
+                                                  color:Colors.orange,
+
+                                                  size: 40.sp,
+                                                ),
+                                                SizedBox(width: 5),
+                                                Text(
+                                                  '${rating.toString()}'+ '' +'Stars',
+                                                  style: TextStyle(
+                                                      color: Colors.black,fontSize: 20.sp),
+                                                ),
+                                               
+                                              ],
+                                            ),
+                                          );
+                                        }).toList();
+                                      },
+                                      onSelected: (int rating) {
+                                        setState(() {
+                                          selectedRating = rating;
+                                          filtreByRating(
+                                              rating.toDouble()); // Mettre à jour la valeur sélectionnée
+                                        });
+                                      }, */
+                                  child: Row(
+                                    children: [
+                                      Icon(
+                                        Icons.star,
+                                        color: Color.fromARGB(255, 0, 0, 0),
+                                        size: 16.sp,
+                                      ),
+                                      SizedBox(width: 5),
+                                      GestureDetector(
+                                          onTap: () {
+                                            setState(() {
+                                              showRatings = !showRatings;
+                                            });
+                                          },
+                                          child: Text(
+                                            'Rating',
+                                            style: TextStyle(
+                                              color:
+                                                  Color.fromARGB(255, 0, 0, 0),
+                                              fontSize: 16.sp,
+                                              fontWeight: FontWeight.normal,
+                                            ),
+                                          )),
+                                    ],
+                                  ),
+
+                                  //)
+                                ),
                               ),
 
                               SizedBox(
@@ -554,13 +733,14 @@ class _HotelsPageState extends State<HotelsPage> {
                               ),
                               Container(
                                 height: 10.h,
-                                width: 100.w,
+                                width: 150.w,
                                 child: DecoratedBox(
                                     decoration: BoxDecoration(
                                       color: Color.fromARGB(255, 255, 255, 255),
                                       borderRadius: BorderRadius.circular(10),
                                       border: Border.all(
-                                        color: Colors.grey,
+                                        color:
+                                            Color.fromARGB(255, 255, 255, 255),
                                         width: 1.0,
                                       ),
                                       /*  boxShadow: [
@@ -580,14 +760,21 @@ class _HotelsPageState extends State<HotelsPage> {
                                           size: 16.sp,
                                         ),
                                         SizedBox(width: 5),
-                                        Text(
-                                          'Sellers',
-                                          style: TextStyle(
-                                            color: Color.fromARGB(255, 0, 0, 0),
-                                            fontSize: 16.sp,
-                                            fontWeight: FontWeight.normal,
-                                          ),
-                                        ),
+                                        GestureDetector(
+                                            onTap: () async {
+                                              filterHotelsByPriceHighToLow();
+                                              // Utilisez la liste triée dans votre application Flutter
+                                              // Par exemple, vous pouvez les afficher dans une ListView.builder
+                                            },
+                                            child: Text(
+                                              'Price high to low',
+                                              style: TextStyle(
+                                                color: Color.fromARGB(
+                                                    255, 0, 0, 0),
+                                                fontSize: 16.sp,
+                                                fontWeight: FontWeight.normal,
+                                              ),
+                                            )),
                                       ],
                                     )),
                               ),
@@ -598,11 +785,11 @@ class _HotelsPageState extends State<HotelsPage> {
                       ],
                     )),
                   ),
-                  backgroundColor: Color.fromARGB(255, 255, 255, 255),
+                  //  backgroundColor: Color.fromARGB(255, 255, 255, 255),
                   leading: IconButton(
                     icon: Icon(
                       Icons.arrow_back,
-                      color: Colors.black,
+                      color: Color.fromARGB(255, 255, 255, 255),
                       // Set the desired color for the back button
                     ),
                     onPressed: () {
@@ -692,6 +879,70 @@ class _HotelsPageState extends State<HotelsPage> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              if (showRatings && !Responsive.isDesktop(context))
+                Container(
+                    height: 45,
+                    margin: EdgeInsets.all(3),
+                    child: Material(
+                      elevation: 5,
+                      borderRadius: BorderRadius.circular(2),
+                      child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: 5,
+                        itemBuilder: (BuildContext context, int index) {
+                          List<Widget> starIcons = [];
+
+                          for (int i = 0; i <= index; i++) {
+                            starIcons.add(
+                              Icon(
+                                Icons.star,
+                                size: 30.sp,
+                                color: Color.fromARGB(255, 255, 183, 0),
+                              ),
+                            );
+                          }
+
+                          return Container(
+                              margin: EdgeInsets.symmetric(horizontal: 4),
+                              padding: EdgeInsets.all(3),
+                              decoration: BoxDecoration(
+                                color: Color.fromARGB(255, 255, 255, 255),
+                                border: Border.all(
+                                    color: Color.fromARGB(255, 255, 255, 255)),
+                                borderRadius: BorderRadius.circular(40),
+                              ),
+                              child: Material(
+                                elevation: 5,
+                                borderRadius: BorderRadius.circular(40),
+                                child: GestureDetector(
+                                    onTap: () {
+                                      print('${starIcons.length}');
+                                      filtreByRating(
+                                          starIcons.length as double);
+                                    },
+                                    child: Container(padding: EdgeInsets.all(5),
+                                       decoration: BoxDecoration(
+                                color:Color.fromARGB(255, 255, 255, 255),
+                                border: Border.all(
+                                    color: Color.fromARGB(255, 168, 168, 168)),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                                    child: 
+                                    Row(
+                                      children: [Text('${starIcons.length}',style: TextStyle( color: Color.fromARGB(255, 124, 124, 124),fontSize: 30.sp),),Icon(
+                                Icons.star,
+                                size: 30.sp,
+                             //   color: Color.fromARGB(255, 255, 162, 0),
+                              color: Color.fromARGB(255, 255, 166, 0),
+                              ),],
+                                     // children: starIcons,
+                                 ) )),
+                                //)
+                              ));
+                        },
+                      ),
+                    )),
+
               //   if (Responsive.isDesktop(context))
               // if(MediaQuery.of(context).size.width > 1500 )
               /*   Expanded(
@@ -1559,7 +1810,7 @@ class _HotelsPageState extends State<HotelsPage> {
                                                               // filterByPrice(_selectedPriceRange.start, _selectedPriceRange.end);
                                                             },
                                                             child: Text(
-                                                              'Appliquer',
+                                                              'Fetch',
                                                               style: TextStyle(
                                                                 color: Colors
                                                                     .white,
@@ -1699,8 +1950,8 @@ class _HotelsPageState extends State<HotelsPage> {
                                                               color: Color
                                                                   .fromARGB(
                                                                       255,
-                                                                      238,
-                                                                      16,
+                                                                      229,
+                                                                      15,
                                                                       0),
                                                               borderRadius:
                                                                   BorderRadius
@@ -2084,7 +2335,8 @@ class _HotelsPageState extends State<HotelsPage> {
                                                                                     apiCode = seller.sellerData.api.id;
                                                                                     HotelId = item.hotel.hotelId;
                                                                                     print('hotelnameclicked${item.hotel.hotelName}');
-                                                                                    await getCurrentLocation();
+                                                                                    //await getCurrentLocation();
+                                                                                    await getCurrentLocationForweb();
                                                                                     await createApiProduct();
                                                                                     var url = seller.detailsLink;
                                                                                     if (await canLaunch(url)) {
@@ -2453,7 +2705,7 @@ class _HotelsPageState extends State<HotelsPage> {
                                                               item.hotel
                                                                   .picture,
                                                               fit: BoxFit.cover,
-                                                              height: 300,
+                                                              height: 370,
                                                               width: 500,
                                                             ),
                                                           ),
@@ -2464,7 +2716,12 @@ class _HotelsPageState extends State<HotelsPage> {
                                                               top: 0,
                                                               left: 0,
                                                               child: Container(
-                                                                width: 30.w,
+                                                                width: MediaQuery.of(context)
+                                                                            .size
+                                                                            .width <
+                                                                        1090
+                                                                    ? 50.w
+                                                                    : 30.w,
                                                                 height: 40.h,
                                                                 padding:
                                                                     EdgeInsets
@@ -2474,9 +2731,9 @@ class _HotelsPageState extends State<HotelsPage> {
                                                                   color: Color
                                                                       .fromARGB(
                                                                           255,
-                                                                          238,
+                                                                          230,
                                                                           16,
-                                                                          0),
+                                                                          1),
                                                                   borderRadius:
                                                                       BorderRadius
                                                                           .circular(
@@ -2490,7 +2747,7 @@ class _HotelsPageState extends State<HotelsPage> {
                                                                       color: Colors
                                                                           .white,
                                                                       size:
-                                                                          20.sp,
+                                                                          18.sp,
                                                                     ),
                                                                     SizedBox(
                                                                         width:
@@ -2502,7 +2759,7 @@ class _HotelsPageState extends State<HotelsPage> {
                                                                         color: Colors
                                                                             .white,
                                                                         fontSize:
-                                                                            20.sp,
+                                                                            18.sp,
                                                                         fontWeight:
                                                                             FontWeight.bold,
                                                                       ),
@@ -2996,7 +3253,7 @@ class _HotelsPageState extends State<HotelsPage> {
                                                                                                 HotelId = item.hotel.hotelId;
 
                                                                                                 print('hotelnameclicked${item.hotel.hotelName}');
-                                                                                                  await getCurrentLocationForweb();
+                                                                                                await getCurrentLocationForweb();
                                                                                                 await createApiProduct();
                                                                                                 var url = seller.detailsLink;
                                                                                                 if (await canLaunch(url)) {
@@ -3694,15 +3951,36 @@ class _HotelsPageState extends State<HotelsPage> {
                                                             MainAxisAlignment
                                                                 .spaceBetween,
                                                         children: [
-                                                          Text('TND+'
-                                                              '${_selectedPriceRange.start.toStringAsFixed(2)}'),
-                                                          Text('TND+'
-                                                              '${_selectedPriceRange.end.toStringAsFixed(2)}'),
+                                                          Text(
+                                                            'TND+'
+                                                            '${_selectedPriceRange.start.toStringAsFixed(2)}',
+                                                            style: TextStyle(
+                                                                color: Colors
+                                                                    .black),
+                                                          ),
+                                                          Text(
+                                                            'TND+'
+                                                            '${_selectedPriceRange.end.toStringAsFixed(2)}',
+                                                            style: TextStyle(
+                                                                color: Colors
+                                                                    .black),
+                                                          ),
                                                         ],
                                                       ),
                                                       Container(
                                                         //color: Colors.black,
                                                         child: ElevatedButton(
+                                                          style: ButtonStyle(
+                                                            elevation:
+                                                                MaterialStateProperty
+                                                                    .all<double>(
+                                                                        8.0),
+                                                            backgroundColor:
+                                                                MaterialStateProperty
+                                                                    .all<Color>(
+                                                                        Colors
+                                                                            .black),
+                                                          ),
                                                           onPressed: () {
                                                             int startPrice =
                                                                 _selectedPriceRange
@@ -3717,7 +3995,7 @@ class _HotelsPageState extends State<HotelsPage> {
                                                                 endPrice);
                                                           },
                                                           child: Text(
-                                                            'Appliquer',
+                                                            'Fetch',
                                                             style: TextStyle(
                                                               color:
                                                                   Colors.white,
@@ -3837,9 +4115,9 @@ class _HotelsPageState extends State<HotelsPage> {
                                                             color:
                                                                 Color.fromARGB(
                                                                     255,
-                                                                    238,
+                                                                    230,
                                                                     16,
-                                                                    0),
+                                                                    1),
                                                             borderRadius:
                                                                 BorderRadius
                                                                     .circular(
@@ -4213,7 +4491,8 @@ class _HotelsPageState extends State<HotelsPage> {
                                                                                   apiCode = seller.sellerData.api.id;
                                                                                   HotelId = item.hotel.hotelId;
                                                                                   print('hotelnameclicked${item.hotel.hotelName}');
-                                                                                  await getCurrentLocation();
+                                                                                  //  await getCurrentLocation();
+                                                                                  await getCurrentLocationForweb();
                                                                                   await createApiProduct();
                                                                                   var url = seller.detailsLink;
                                                                                   if (await canLaunch(url)) {
@@ -4268,7 +4547,7 @@ class _HotelsPageState extends State<HotelsPage> {
                                                           child: Image.network(
                                                             item.hotel.picture,
                                                             fit: BoxFit.cover,
-                                                            height: 300,
+                                                            height: 370,
                                                             width: 500,
                                                           ),
                                                         ),
@@ -4279,7 +4558,13 @@ class _HotelsPageState extends State<HotelsPage> {
                                                             top: 0,
                                                             left: 0,
                                                             child: Container(
-                                                              width: 30.w,
+                                                              width: MediaQuery.of(
+                                                                              context)
+                                                                          .size
+                                                                          .width <
+                                                                      1090
+                                                                  ? 50.w
+                                                                  : 30.w,
                                                               height: 40.h,
                                                               padding:
                                                                   EdgeInsets
@@ -4289,9 +4574,9 @@ class _HotelsPageState extends State<HotelsPage> {
                                                                 color: Color
                                                                     .fromARGB(
                                                                         255,
-                                                                        238,
-                                                                        16,
-                                                                        0),
+                                                                        206,
+                                                                        31,
+                                                                        19),
                                                                 borderRadius:
                                                                     BorderRadius
                                                                         .circular(
@@ -4304,7 +4589,7 @@ class _HotelsPageState extends State<HotelsPage> {
                                                                         .whatshot,
                                                                     color: Colors
                                                                         .white,
-                                                                    size: 20.sp,
+                                                                    size: 18.sp,
                                                                   ),
                                                                   SizedBox(
                                                                       width: 5),
@@ -4315,7 +4600,7 @@ class _HotelsPageState extends State<HotelsPage> {
                                                                       color: Colors
                                                                           .white,
                                                                       fontSize:
-                                                                          20.sp,
+                                                                          18.sp,
                                                                       fontWeight:
                                                                           FontWeight
                                                                               .bold,
@@ -4814,7 +5099,7 @@ class _HotelsPageState extends State<HotelsPage> {
                                                                                               HotelId = item.hotel.hotelId;
 
                                                                                               print('hotelnameclicked${item.hotel.hotelName}');
-                                                                                                 await getCurrentLocationForweb();
+                                                                                              await getCurrentLocationForweb();
                                                                                               await createApiProduct();
                                                                                               var url = seller.detailsLink;
                                                                                               if (await canLaunch(url)) {

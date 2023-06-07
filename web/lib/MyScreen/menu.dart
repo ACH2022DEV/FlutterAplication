@@ -25,10 +25,12 @@ class HeaderWebMenu extends StatelessWidget {
           title: Column(
             children: [
               Container(
-                  width: 110,
+                  width: 120,
                   height: 30,
-                  decoration: BoxDecoration(
-                   /*  border: Border.all(
+  color: Colors.transparent,
+                /*   decoration: BoxDecoration(
+                      
+                    /*  border: Border.all(
                        color: Color.fromARGB(255, 255, 0, 0),  width: 2
                         // Ajoute une bordure rouge
                         ), */
@@ -41,11 +43,12 @@ class HeaderWebMenu extends StatelessWidget {
         offset: Offset(0, 2),
       ), */
                     ],
-                  ),
+                  ), */
                   child: Material(
-                      color: Color.fromARGB(255, 255, 255, 255),
-                      elevation: 3,
-                      borderRadius: BorderRadius.circular(40),
+                     //color: Color.fromARGB(255, 255, 255, 255),
+                    color: Colors.transparent,
+                      elevation: 0,
+                      borderRadius: BorderRadius.circular(10),
                       child: Row(
                         children: [
                           SizedBox(
@@ -53,7 +56,7 @@ class HeaderWebMenu extends StatelessWidget {
                           ),
                           Icon(
                             Icons.favorite_border,
-                            color: Color.fromARGB(255, 212, 32, 32),
+                           color: Color.fromARGB(255, 255, 255, 255),
                             //color: Color.fromARGB(255, 253, 253, 253),
                           ),
                           SizedBox(
@@ -62,8 +65,8 @@ class HeaderWebMenu extends StatelessWidget {
                           Text('Favorites',
                               style: TextStyle(
                                 fontFamily: 'Open Sans',
-                                fontWeight: FontWeight.bold,
-                                color: Color.fromARGB(255, 0, 0, 0),
+                                fontWeight: FontWeight.normal,
+                               color: Color.fromARGB(255, 255, 255, 255),
                                 shadows: [
                                   /*  Shadow(
         color: Colors.grey,
@@ -78,7 +81,7 @@ class HeaderWebMenu extends StatelessWidget {
           ),
         ),
         SizedBox(
-          width: 20,
+          width: 2,
         ),
         HeaderMenu(
           press: () {
@@ -92,10 +95,10 @@ class HeaderWebMenu extends StatelessWidget {
           title: Column(
             children: [
               Container(
-                  width: 110,
+                  width: 100,
                   height: 30,
-                  decoration: BoxDecoration(
-                   /*  border: Border.all(
+                 /*  decoration: BoxDecoration(
+                    /*  border: Border.all(
                        color: Color.fromARGB(255, 255, 0, 0),  width: 2
                         // Ajoute une bordure rouge
                         ), */
@@ -108,18 +111,18 @@ class HeaderWebMenu extends StatelessWidget {
         offset: Offset(0, 2),
       ), */
                     ],
-                  ),
+                  ), */
                   child: Material(
-                      color: Color.fromARGB(255, 255, 255, 255),
-                      elevation: 3,
-                      borderRadius: BorderRadius.circular(40),
+                        color: Colors.transparent,
+                      elevation: 0,
+                      borderRadius: BorderRadius.circular(10),
                       child: Row(
                         children: [
                           SizedBox(
                             width: 2.w,
                           ),
                           Icon(
-                            Icons.info,color: Color.fromARGB(255, 212, 32, 32),
+                            Icons.info,  color: Color.fromARGB(255, 255, 255, 255),
                             //color: Color.fromARGB(255, 255, 255, 255,),
                           ),
                           SizedBox(
@@ -128,8 +131,8 @@ class HeaderWebMenu extends StatelessWidget {
                           Text("About",
                               style: TextStyle(
                                 fontFamily: 'Open Sans',
-                                fontWeight: FontWeight.bold,
-                                color: Color.fromARGB(255, 0, 0, 0),
+                                fontWeight: FontWeight.normal,
+                               color: Color.fromARGB(255, 255, 255, 255),
                                 shadows: [
                                   /* Shadow(
         color: Colors.grey,
@@ -144,7 +147,7 @@ class HeaderWebMenu extends StatelessWidget {
           ),
         ),
         SizedBox(
-          width: kPadding,
+          width: 2,
         ),
         HeaderMenu(
           press: () {
@@ -153,10 +156,10 @@ class HeaderWebMenu extends StatelessWidget {
           title: Column(
             children: [
               Container(
-                  width: 110,
+                  width: 100,
                   height: 30,
-                  decoration: BoxDecoration(
-                  /*   border: Border.all(
+               /*    decoration: BoxDecoration(
+                    /*   border: Border.all(
                         color: Color.fromARGB(255, 255, 0, 0),  width: 2
                         // Ajoute une bordure rouge
                         ), */
@@ -169,18 +172,19 @@ class HeaderWebMenu extends StatelessWidget {
         offset: Offset(0, 2),
       ), */
                     ],
-                  ),
+                  ), */
                   child: Material(
-                      color: Color.fromARGB(255, 255, 255, 255),
-                      elevation: 3,
-                      borderRadius: BorderRadius.circular(40),
+                       color: Colors.transparent,
+                      elevation: 0,
+                      borderRadius: BorderRadius.circular(10),
                       child: Row(
                         children: [
                           SizedBox(
                             width: 2.w,
                           ),
                           Icon(
-                            Icons.store, color: Color.fromARGB(255, 212, 32, 32),
+                            Icons.store,
+                           color: Color.fromARGB(255, 255, 255, 255),
                             // color: Color.fromARGB(255, 255, 255, 255,)
                           ),
                           SizedBox(
@@ -189,8 +193,8 @@ class HeaderWebMenu extends StatelessWidget {
                           Text('Agency',
                               style: TextStyle(
                                 fontFamily: 'Open Sans',
-                                fontWeight: FontWeight.bold,
-                                color: Color.fromARGB(255, 0, 0, 0),
+                                fontWeight: FontWeight.normal,
+                               color: Color.fromARGB(255, 255, 255, 255),
                                 shadows: [
                                   /*  Shadow(
         color: Colors.grey,
@@ -205,7 +209,7 @@ class HeaderWebMenu extends StatelessWidget {
           ),
         ),
         const SizedBox(
-          width: kPadding,
+          width: 2,
         ),
         HeaderMenu(
           press: () async {
@@ -221,10 +225,10 @@ class HeaderWebMenu extends StatelessWidget {
           title: Column(
             children: [
               Container(
-                  width: 110,
+                  width: 100,
                   height: 30,
-                  decoration: BoxDecoration(
-                   /*  border: Border.all(
+                 /*  decoration: BoxDecoration(
+                    /*  border: Border.all(
                         color: Color.fromARGB(255, 255, 0, 0),  width: 2
                         // Ajoute une bordure rouge
                         ), */
@@ -237,18 +241,19 @@ class HeaderWebMenu extends StatelessWidget {
         offset: Offset(0, 2),
       ), */
                     ],
-                  ),
+                  ), */
                   child: Material(
-                      color: Color.fromARGB(255, 255, 255, 255),
-                      elevation: 3,
-                      borderRadius: BorderRadius.circular(40),
+                     color: Colors.transparent,
+                      elevation: 0,
+                      borderRadius: BorderRadius.circular(10),
                       child: Row(
                         children: [
                           SizedBox(
                             width: 2.w,
                           ),
                           Icon(
-                            Icons.phone,color: Color.fromARGB(255, 212, 32, 32),
+                            Icons.phone,
+                            color: Color.fromARGB(255, 255, 255, 255),
                             //,color: Color.fromARGB(255, 255, 255, 255,)
                           ),
                           SizedBox(
@@ -257,8 +262,8 @@ class HeaderWebMenu extends StatelessWidget {
                           Text('Contact',
                               style: TextStyle(
                                 fontFamily: 'Open Sans',
-                                fontWeight: FontWeight.bold,
-                                color: Color.fromARGB(255, 0, 0, 0),
+                                fontWeight: FontWeight.normal,
+                           color: Color.fromARGB(255, 255, 255, 255),
                                 shadows: [
                                   /* Shadow(
         color: Colors.grey,
@@ -273,7 +278,7 @@ class HeaderWebMenu extends StatelessWidget {
           ),
         ),
         const SizedBox(
-          width: kPadding,
+          width: 2,
         ),
         HeaderMenu(
           press: () async {
@@ -290,10 +295,10 @@ class HeaderWebMenu extends StatelessWidget {
           title: Column(
             children: [
               Container(
-                  width: 110,
+                  width: 100,
                   height: 30,
-                  decoration: BoxDecoration(
-                   /*  border: Border.all(
+                /*   decoration: BoxDecoration(
+                    /*  border: Border.all(
                         color: Color.fromARGB(255, 255, 0, 0), width: 2
                         // Ajoute une bordure rouge
                         ), */
@@ -306,11 +311,11 @@ class HeaderWebMenu extends StatelessWidget {
         offset: Offset(0, 2),
       ), */
                     ],
-                  ),
+                  ), */
                   child: Material(
-                      color: Color.fromARGB(255, 255, 255, 255),
-                      elevation: 3,
-                      borderRadius: BorderRadius.circular(40),
+                       color: Colors.transparent,
+                      elevation: 0,
+                      borderRadius: BorderRadius.circular(10),
                       child: Center(
                           child: Row(
                         children: [
@@ -319,7 +324,7 @@ class HeaderWebMenu extends StatelessWidget {
                           ),
                           Icon(
                             Icons.person_add,
-                            color:  Color.fromARGB(255, 212, 32, 32),
+                            color: Color.fromARGB(255, 255, 255, 255),
                             //color: Color.fromARGB(255, 255, 255, 255,)
                           ),
                           SizedBox(
@@ -328,8 +333,8 @@ class HeaderWebMenu extends StatelessWidget {
                           Text("Sign up",
                               style: TextStyle(
                                 fontFamily: 'Open Sans',
-                                fontWeight: FontWeight.bold,
-                                color: Color.fromARGB(255, 0, 0, 0),
+                                fontWeight: FontWeight.normal,
+                               color: Color.fromARGB(255, 255, 255, 255),
                                 shadows: [
                                   /*  Shadow(
         color: Colors.grey,
@@ -601,7 +606,8 @@ class _MobMenuState extends State<MobMenu> {
                       children: [
                         Icon(
                           Icons.favorite_border,
-                          color: Color.fromARGB(255, 153, 153, 153),
+                          //color: Color.fromARGB(255, 74, 74, 74),
+                          color: Color.fromARGB(255, 0, 0, 0),
                         ),
                         SizedBox(
                             width: 10
@@ -609,15 +615,15 @@ class _MobMenuState extends State<MobMenu> {
                         Text('Favorites',
                             style: TextStyle(
                               fontFamily: 'Open Sans',
-                              fontWeight: FontWeight.bold,
+                              fontWeight: FontWeight.normal,
                               fontSize: 18.sp,
-                              color: Color.fromARGB(255, 11, 11, 11),
+                              color: Color.fromARGB(255, 0, 0, 0),
                               shadows: [
-                                Shadow(
+                                /* Shadow(
                                   color: Colors.grey,
                                   offset: Offset(0, 2),
                                   blurRadius: 2,
-                                ),
+                                ), */
                               ],
                             )),
                       ],
@@ -638,7 +644,8 @@ class _MobMenuState extends State<MobMenu> {
                       children: [
                         Icon(
                           Icons.info,
-                          color: Color.fromARGB(255, 153, 153, 153),
+                          //color: Color.fromARGB(255, 74, 74, 74),
+                          color: Color.fromARGB(255, 0, 0, 0),
                         ),
                         SizedBox(
                             width:
@@ -646,16 +653,16 @@ class _MobMenuState extends State<MobMenu> {
                         Text("About",
                             style: TextStyle(
                               fontFamily: 'Open Sans',
-                              fontWeight: FontWeight.bold,
+                              fontWeight: FontWeight.normal,
                               fontSize: 18.sp,
-                              color: Color.fromARGB(255, 11, 11, 11),
-                              shadows: [
+                              color: Color.fromARGB(255, 0, 0, 0),
+                              /*   shadows: [
                                 Shadow(
                                   color: Colors.grey,
                                   offset: Offset(0, 2),
                                   blurRadius: 2,
                                 ),
-                              ],
+                              ], */
                             )),
                       ],
                     )),
@@ -677,7 +684,8 @@ class _MobMenuState extends State<MobMenu> {
                       children: [
                         Icon(
                           Icons.store,
-                          color: Color.fromARGB(255, 153, 153, 153),
+                          // color: Color.fromARGB(255, 74, 74, 74),
+                          color: Color.fromARGB(255, 0, 0, 0),
                         ),
                         SizedBox(
                             width:
@@ -685,16 +693,17 @@ class _MobMenuState extends State<MobMenu> {
                         Text('Agency',
                             style: TextStyle(
                               fontFamily: 'Open Sans',
-                              fontWeight: FontWeight.bold,
+                              fontWeight: FontWeight.normal,
                               fontSize: 18.sp,
-                              color: Color.fromARGB(255, 11, 11, 11),
-                              shadows: [
+                              color: Color.fromARGB(255, 0, 0, 0),
+
+                              /*  shadows: [
                                 Shadow(
                                   color: Colors.grey,
                                   offset: Offset(0, 2),
                                   blurRadius: 2,
                                 ),
-                              ],
+                              ], */
                             )),
                       ],
                     )),
@@ -723,7 +732,8 @@ class _MobMenuState extends State<MobMenu> {
                       children: [
                         Icon(
                           Icons.phone,
-                          color: Color.fromARGB(255, 153, 153, 153),
+                          // color: Color.fromARGB(255, 74, 74, 74),
+                          color: Color.fromARGB(255, 0, 0, 0),
                         ),
                         SizedBox(
                             width:
@@ -731,16 +741,16 @@ class _MobMenuState extends State<MobMenu> {
                         Text('Contact',
                             style: TextStyle(
                               fontFamily: 'Open Sans',
-                              fontWeight: FontWeight.bold,
+                              fontWeight: FontWeight.normal,
                               fontSize: 18.sp,
-                              color: Color.fromARGB(255, 11, 11, 11),
-                              shadows: [
+                              color: Color.fromARGB(255, 0, 0, 0),
+                              /*  shadows: [
                                 Shadow(
                                   color: Colors.grey,
                                   offset: Offset(0, 2),
                                   blurRadius: 2,
                                 ),
-                              ],
+                              ], */
                             )),
                       ],
                     )),
@@ -770,7 +780,9 @@ class _MobMenuState extends State<MobMenu> {
                       children: [
                         Icon(
                           Icons.person_add,
-                          color: Color.fromARGB(255, 153, 153, 153),
+                          // color: Color.fromARGB(255, 189, 0, 0),
+
+                          color: Color.fromARGB(255, 0, 0, 0),
                         ),
                         SizedBox(
                             width:
@@ -778,21 +790,97 @@ class _MobMenuState extends State<MobMenu> {
                         Text("Sign up",
                             style: TextStyle(
                               fontFamily: 'Open Sans',
-                              fontWeight: FontWeight.bold,
+                              fontWeight: FontWeight.normal,
                               fontSize: 18.sp,
-                              color: Color.fromARGB(255, 11, 11, 11),
-                              shadows: [
+                              color: Color.fromARGB(255, 0, 0, 0),
+                              /*  shadows: [
                                 Shadow(
                                   color: Colors.grey,
                                   offset: Offset(0, 2),
                                   blurRadius: 2,
                                 ),
-                              ],
+                              ], */
                             )),
-                        /*  Divider(
-                      color: Colors.black,
-                      thickness: 1.0,
-                    ), */
+                      ],
+                    )),
+              ],
+            ),
+          ),
+          Divider(
+            color: Colors.black,
+            thickness: 1.0,
+            height: 10,
+          ),
+          HeaderMenu(
+            press: () {},
+            title: Column(
+              children: [
+                Container(
+                    margin: EdgeInsets.all(8),
+                    child: Row(
+                      children: [
+                        Icon(
+                          Icons.settings,
+                          //   color: Color.fromARGB(255, 74, 74, 74),
+                          color: Color.fromARGB(255, 0, 0, 0),
+                        ),
+                        SizedBox(
+                            width:
+                                8), // Ajoute un espacement entre l'icône et le texte
+                        Text('Setting',
+                            style: TextStyle(
+                              fontFamily: 'Open Sans',
+                              fontWeight: FontWeight.normal,
+                              fontSize: 18.sp,
+                              color: Color.fromARGB(255, 0, 0, 0),
+                              /*  shadows: [
+                                Shadow(
+                                  color: Colors.grey,
+                                  offset: Offset(0, 2),
+                                  blurRadius: 2,
+                                ),
+                              ], */
+                            )),
+                      ],
+                    )),
+              ],
+            ),
+          ),
+          Divider(
+            color: Colors.black,
+            thickness: 1.0,
+            height: 10,
+          ),
+          HeaderMenu(
+            press: () {},
+            title: Column(
+              children: [
+                Container(
+                    margin: EdgeInsets.all(8),
+                    child: Row(
+                      children: [
+                        Icon(
+                          Icons.help,
+                          // color: Color.fromARGB(255, 74, 74, 74),
+                          color: Color.fromARGB(255, 0, 0, 0),
+                        ),
+                        SizedBox(
+                            width:
+                                8), // Ajoute un espacement entre l'icône et le texte
+                        Text('Help & Feedback',
+                            style: TextStyle(
+                              fontFamily: 'Open Sans',
+                              fontWeight: FontWeight.normal,
+                              fontSize: 18.sp,
+                              color: Color.fromARGB(255, 0, 0, 0),
+                              /*  shadows: [
+                                Shadow(
+                                  color: Colors.grey,
+                                  offset: Offset(0, 2),
+                                  blurRadius: 2,
+                                ),
+                              ], */
+                            )),
                       ],
                     )),
               ],

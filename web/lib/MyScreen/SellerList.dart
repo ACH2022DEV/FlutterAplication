@@ -66,7 +66,7 @@ class _MyBoutiqueState extends State<MyBoutique> {
         leading: IconButton(
           icon: Icon(
             Icons.arrow_back,
-            color: Colors.black,
+            color: Color.fromARGB(255, 255, 255, 255),
             // Set the desired color for the back button
           ),
           onPressed: () {
@@ -76,10 +76,10 @@ class _MyBoutiqueState extends State<MyBoutique> {
         title: Align(
           child: Text(
             'Agency($sellerLenght)',
-            style: TextStyle(color: Colors.black),
+            style: TextStyle(color: Color.fromARGB(255, 255, 255, 255)),
           ),
         ),
-        backgroundColor: Color.fromARGB(255, 254, 254, 254),
+        backgroundColor: Color.fromARGB(255, 200, 3, 3),
       ),
       body: Column(
           // margin: EdgeInsets.only(top: 20),
@@ -122,6 +122,8 @@ class _MyBoutiqueState extends State<MyBoutique> {
                   margin: const EdgeInsets.all(2),
                   padding: const EdgeInsets.all(3),
                   decoration: BoxDecoration(
+                    border: Border.all(
+                        color: Color.fromARGB(255, 0, 0, 0), width: 3),
                     color: Color.fromARGB(255, 255, 255, 255),
                     borderRadius: const BorderRadius.all(
                       Radius.circular(12),
@@ -137,7 +139,7 @@ class _MyBoutiqueState extends State<MyBoutique> {
                   ),
                   child: Column(
                     children: [
-                      Expanded(
+                      /*  Expanded(
                         flex: 8,
                         child: Container(
                             height: 60,
@@ -147,6 +149,18 @@ class _MyBoutiqueState extends State<MyBoutique> {
                               fit: BoxFit.cover,
                               height: 80.h,
                             )),
+                      ), */
+                      Expanded(
+                        flex: 8,
+                        child: Container(
+                          height: 45,
+                          width: 200,
+                          child: Image.network(
+                            'http://user3-market.3t.tn/getImages?filename=${seller.brochureFilename}',
+                            fit: BoxFit.cover,
+                            height: 80.h,
+                          ),
+                        ),
                       ),
                       SizedBox(height: 1.h),
                       Text(
@@ -157,7 +171,7 @@ class _MyBoutiqueState extends State<MyBoutique> {
                             fontSize: 20.sp,
                             fontFamily: AutofillHints.name,
                             fontWeight: FontWeight.bold,
-                            color: Colors.black),
+                            color: Color.fromARGB(255, 182, 0, 0)),
                       ),
                       SizedBox(height: 0.5.h),
                       Container(
@@ -176,7 +190,7 @@ class _MyBoutiqueState extends State<MyBoutique> {
                               Text(
                                 '${seller.address}',
                                 style: TextStyle(
-                                  fontWeight: FontWeight.normal,
+                                  fontWeight: FontWeight.bold,
                                   color: Color.fromARGB(255, 0, 0, 0),
                                   fontSize: Responsive.isDesktop(context)
                                       ? 15.sp
@@ -201,20 +215,21 @@ class _MyBoutiqueState extends State<MyBoutique> {
                         },
                         icon: Icon(
                           Icons.store,
-                          color: Colors.white,
+                          color: Color.fromARGB(255, 112, 112, 112),
                         ),
                         label: Text(
                           'Visit Now',
-                          style: TextStyle(color: Colors.white),
+                          style: TextStyle(
+                              color: Color.fromARGB(255, 255, 255, 255)),
                         ),
                         style: ButtonStyle(
                           elevation: MaterialStateProperty.all<double>(5),
                           backgroundColor: MaterialStateProperty.all<Color>(
-                              Color.fromARGB(255, 0, 0, 0)),
+                              Color.fromARGB(255, 168, 0, 0)),
                           shape:
                               MaterialStateProperty.all<RoundedRectangleBorder>(
                             RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(30.0),
+                              borderRadius: BorderRadius.circular(8.0),
                             ),
                           ),
                         ),

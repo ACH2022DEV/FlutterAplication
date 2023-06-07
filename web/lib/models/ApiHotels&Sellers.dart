@@ -200,11 +200,12 @@ class Hotels {
       return hotel.hotel.hotelName.toLowerCase().contains(name.toLowerCase());
     }).toList();
   } */
-List<Hotels> filterHotelsByName(List<Hotels> hotels, String name) {
-  return hotels.where((hotel) {
-    return hotel.hotel.hotelName.toLowerCase().startsWith(name.toLowerCase());
-  }).toList();
-}
+  List<Hotels> filterHotelsByName(List<Hotels> hotels, String name) {
+    return hotels.where((hotel) {
+      return hotel.hotel.hotelName.toLowerCase().startsWith(name.toLowerCase());
+    }).toList();
+  }
+
   List<Hotels> filterHotelsByPrix(
       List<Hotels> hotels, int minPrix, int maxPrix) {
     return hotels.where((hotel) {
@@ -216,6 +217,24 @@ List<Hotels> filterHotelsByName(List<Hotels> hotels, String name) {
             sellerPrix <= maxPrix;
       });
     }).toList();
+  }
+
+  List<Hotels> filterHotelsByPriceLowTohightHight(List<Hotels> hotels) {
+    List<Hotels> sortedHotels =
+        List.from(hotels); // Crée une copie de la liste originale
+
+    sortedHotels.sort((a, b) => a.hotel.lowPrice.compareTo(b.hotel.lowPrice));
+
+    return sortedHotels;
+  }
+
+  List<Hotels> filterHotelsByPriceHighToLow(List<Hotels> hotels) {
+    List<Hotels> sortedHotels =
+        List.from(hotels); // Crée une copie de la liste originale
+  //  sortedHotels.sort();
+    sortedHotels.sort((a, b) => b.hotel.lowPrice.compareTo(a.hotel.lowPrice));
+
+    return sortedHotels;
   }
 
   /* List<Hotels> filterHotelsByRating2(List<Hotels> hotels, double rating) {
@@ -232,8 +251,8 @@ class Hotel {
   String category;
   String location;
   String picture;
-  String? latitude;
-  String? longitude;
+  // String? latitude;
+  // String? longitude;
   String promoText;
   String lowPrice;
   String currency;
@@ -247,8 +266,8 @@ class Hotel {
     required this.location,
     required this.picture,
     required this.promoText,
-     this.latitude,
-        this.longitude,
+    //  this.latitude,
+    //     this.longitude,
     required this.lowPrice,
     required this.currency,
     required this.detailsLink,
@@ -262,8 +281,8 @@ class Hotel {
         location: json["location"],
         picture: json["Picture"],
         promoText: json["PromoText"],
-        latitude: json["Latitude"],
-        longitude: json["Longitude"],
+        // latitude: json["Latitude"],
+        // longitude: json["Longitude"],
         lowPrice: json["lowPrice"],
         currency: json["currency"],
         detailsLink: json["detailsLink"],
@@ -277,8 +296,8 @@ class Hotel {
         "location": location,
         "Picture": picture,
         "PromoText": promoText,
-         "Latitude": latitude,
-        "Longitude": longitude,
+        //  "Latitude": latitude,
+        // "Longitude": longitude,
         "lowPrice": lowPrice,
         "currency": currency,
         "detailsLink": detailsLink,
@@ -355,127 +374,132 @@ class SellerData {
 }
 
 class Api {
-    int id;
-    String baseUrl;
-    String apiKeyValue;
-    String login;
-    String password;
+  int id;
+  String baseUrl;
+  String apiKeyValue;
+  String login;
+  String password;
   //  List<ApiProduct> apiProducts;
 
-    Api({
-        required this.id,
-        required this.baseUrl,
-        required this.apiKeyValue,
-        required this.login,
-        required this.password,
-        //required this.apiProducts,
-    });
+  Api({
+    required this.id,
+    required this.baseUrl,
+    required this.apiKeyValue,
+    required this.login,
+    required this.password,
+    //required this.apiProducts,
+  });
 
-    factory Api.fromJson(Map<String, dynamic> json) => Api(
+  factory Api.fromJson(Map<String, dynamic> json) => Api(
         id: json["id"],
         baseUrl: json["baseUrl"],
         apiKeyValue: json["apiKeyValue"],
         login: json["login"],
         password: json["password"],
-      //  apiProducts: List<ApiProduct>.from(json["apiProducts"].map((x) => ApiProduct.fromJson(x))),
-    );
+        //  apiProducts: List<ApiProduct>.from(json["apiProducts"].map((x) => ApiProduct.fromJson(x))),
+      );
 
-    Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toJson() => {
         "id": id,
         "baseUrl": baseUrl,
         "apiKeyValue": apiKeyValue,
         "login": login,
         "password": password,
-      //  "apiProducts": List<dynamic>.from(apiProducts.map((x) => x.toJson())),
-    };
+        //  "apiProducts": List<dynamic>.from(apiProducts.map((x) => x.toJson())),
+      };
 }
 
 class ApiProduct {
-    int id;
-    String name;
-    ProductType productType;
-    String idProductFromApi;
-    List<dynamic> sellerOfferHasProduct;
-    List<ApiProductClick> apiProductClicks;
+  int id;
+  String name;
+  ProductType productType;
+  String idProductFromApi;
+  List<dynamic> sellerOfferHasProduct;
+  List<ApiProductClick> apiProductClicks;
 
-    ApiProduct({
-        required this.id,
-        required this.name,
-        required this.productType,
-        required this.idProductFromApi,
-        required this.sellerOfferHasProduct,
-        required this.apiProductClicks,
-    });
+  ApiProduct({
+    required this.id,
+    required this.name,
+    required this.productType,
+    required this.idProductFromApi,
+    required this.sellerOfferHasProduct,
+    required this.apiProductClicks,
+  });
 
-    factory ApiProduct.fromJson(Map<String, dynamic> json) => ApiProduct(
+  factory ApiProduct.fromJson(Map<String, dynamic> json) => ApiProduct(
         id: json["id"],
         name: json["name"],
         productType: ProductType.fromJson(json["productType"]),
         idProductFromApi: json["idProductFromApi"],
-        sellerOfferHasProduct: List<dynamic>.from(json["SellerOffer_has_Product"].map((x) => x)),
-        apiProductClicks: List<ApiProductClick>.from(json["apiProductClicks"].map((x) => ApiProductClick.fromJson(x))),
-    );
+        sellerOfferHasProduct:
+            List<dynamic>.from(json["SellerOffer_has_Product"].map((x) => x)),
+        apiProductClicks: List<ApiProductClick>.from(
+            json["apiProductClicks"].map((x) => ApiProductClick.fromJson(x))),
+      );
 
-    Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toJson() => {
         "id": id,
         "name": name,
         "productType": productType.toJson(),
         "idProductFromApi": idProductFromApi,
-        "SellerOffer_has_Product": List<dynamic>.from(sellerOfferHasProduct.map((x) => x)),
-        "apiProductClicks": List<dynamic>.from(apiProductClicks.map((x) => x.toJson())),
-    };
+        "SellerOffer_has_Product":
+            List<dynamic>.from(sellerOfferHasProduct.map((x) => x)),
+        "apiProductClicks":
+            List<dynamic>.from(apiProductClicks.map((x) => x.toJson())),
+      };
 }
 
 class ApiProductClick {
-    int id;
-    String date;
-    String? ipTraveler;
-    String? ipLocation;
-    dynamic traveler;
+  int id;
+  String date;
+  String? ipTraveler;
+  String? ipLocation;
+  dynamic traveler;
 
-    ApiProductClick({
-        required this.id,
-        required this.date,
-        this.ipTraveler,
-        this.ipLocation,
-        this.traveler,
-    });
+  ApiProductClick({
+    required this.id,
+    required this.date,
+    this.ipTraveler,
+    this.ipLocation,
+    this.traveler,
+  });
 
-    factory ApiProductClick.fromJson(Map<String, dynamic> json) => ApiProductClick(
+  factory ApiProductClick.fromJson(Map<String, dynamic> json) =>
+      ApiProductClick(
         id: json["id"],
         date: json["date"],
         ipTraveler: json["ipTraveler"],
         ipLocation: json["ipLocation"],
         traveler: json["traveler"],
-    );
+      );
 
-    Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toJson() => {
         "id": id,
         "date": date,
         "ipTraveler": ipTraveler,
         "ipLocation": ipLocation,
         "traveler": traveler,
-    };
+      };
 }
 
 class ProductType {
-    int id;
-    String name;
+  int id;
+  String name;
 
-    ProductType({
-        required this.id,
-        required this.name,
-    });
+  ProductType({
+    required this.id,
+    required this.name,
+  });
 
-    factory ProductType.fromJson(Map<String, dynamic> json) => ProductType(
+  factory ProductType.fromJson(Map<String, dynamic> json) => ProductType(
         id: json["id"],
         name: json["name"],
-    );
+      );
 
-    Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toJson() => {
         "id": id,
         "name": name,
-    };
+      };
 }
 
 

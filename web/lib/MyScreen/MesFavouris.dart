@@ -364,7 +364,7 @@ class _FavourisState extends State<Favouris> {
          leading: IconButton(
                     icon: Icon(
                       Icons.arrow_back,
-                      color: Colors.black,
+                      color: Color.fromARGB(255, 255, 255, 255),
                       // Set the desired color for the back button
                     ),
                     onPressed: () {
@@ -372,10 +372,13 @@ class _FavourisState extends State<Favouris> {
                           .pop(); // Navigate back to the previous page
                     },
                   ),
-          title: Align(
-            child:Center(child: Text('My Favorites',style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold),),) 
+                  
+          title: 
+         Center(child:Text('My Favorites',style: TextStyle(color: Color.fromARGB(255, 255, 255, 255),fontWeight: FontWeight.bold),), ) 
+         
+          ,backgroundColor: Color.fromARGB(255, 204, 35, 35)
+         
           ),
-          backgroundColor: Color.fromARGB(255, 255, 255, 255)),
       body:
       Column(  mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -806,6 +809,7 @@ class _FavourisState extends State<Favouris> {
                                                                                     HotelId = item.hotel.hotelId;
                                                                                     print('hotelnameclicked${item.hotel.hotelName}');
                                                                                     await getCurrentLocation();
+                                                                                    
                                                                                     await createApiProduct();
                                                                                     var url = seller.detailsLink;
                                                                                     if (await canLaunch(url)) {
@@ -857,7 +861,7 @@ class _FavourisState extends State<Favouris> {
                                                 child: Image.network(
                                                   item.hotel.picture,
                                                   fit: BoxFit.cover,
-                                                  height: 300,
+                                                  height: 350,
                                                   width: 500,
                                                 ),
                                               ),

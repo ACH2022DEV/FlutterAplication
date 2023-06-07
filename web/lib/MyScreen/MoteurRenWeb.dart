@@ -939,10 +939,12 @@ class _MoteurWebState extends State<MoteurWeb> {
       },
     );
   } */
+  bool isActivate = false;
 
   @override
   void initState() {
     super.initState();
+    isActivate = true;
   }
 
   List<Map<String, dynamic>> occupanciesList = [];
@@ -1262,7 +1264,7 @@ class _MoteurWebState extends State<MoteurWeb> {
                                       _showCircuitContainer = false;
                                       _showVisaContainer = false;
                                       _showHotelContainer = true;
-
+   isActivate = true;
                                       _color = _color2;
                                       _color1 = _colorBlanc;
                                       _color3 = _colorBlanc;
@@ -1282,11 +1284,13 @@ class _MoteurWebState extends State<MoteurWeb> {
                                         height: 40,
                                         decoration: BoxDecoration(
                                           //  color: Color.fromARGB(255, 255, 255, 255),
-                                          color: _color,
+                                          color: isActivate ? _color2 : _color,
                                           borderRadius:
                                               BorderRadius.circular(40),
                                           border: Border.all(
-                                            color: Color.fromARGB(255, 8, 4, 4),
+                                            color: isActivate
+                                                ? Colors.transparent
+                                                : Color.fromARGB(255, 8, 4, 4),
                                             width: 1,
                                           ),
                                           boxShadow: [
@@ -1307,16 +1311,22 @@ class _MoteurWebState extends State<MoteurWeb> {
                                             ),
                                             Icon(
                                               Icons.hotel,
-                                              color:
-                                                  Color.fromARGB(255, 8, 4, 4),
+                                              color: isActivate
+                                                  ? Color.fromARGB(
+                                                      255, 255, 255, 255)
+                                                  : Color.fromARGB(
+                                                      255, 8, 4, 4),
                                               size: 30,
                                             ),
                                             Text(
                                               'Hotels ',
                                               style: TextStyle(
                                                 fontSize: 20,
-                                                color: Color.fromARGB(
-                                                    255, 8, 4, 4),
+                                                color: isActivate
+                                                    ? Color.fromARGB(
+                                                        255, 255, 255, 255)
+                                                    : Color.fromARGB(
+                                                        255, 8, 4, 4),
                                                 fontWeight: FontWeight.bold,
                                               ),
                                             ),
@@ -1336,6 +1346,7 @@ class _MoteurWebState extends State<MoteurWeb> {
                                       _color = _colorBlanc;
                                       _color1 = _color2;
                                       _color3 = _colorBlanc;
+                                         isActivate = false;
                                       /*  if (_showCircuitContainer = true) {
                         _color1 = _color2;
                       } else {
@@ -1423,6 +1434,7 @@ class _MoteurWebState extends State<MoteurWeb> {
                                       _color = _colorBlanc;
                                       _color1 = _colorBlanc;
                                       _color3 = _color2;
+                                      isActivate = false;
                                       /*  if (_showVisaContainer = true) {
                         _color3 = _color2;
                       } else if (_showCircuitContainer == true ||
@@ -1541,15 +1553,18 @@ class _MoteurWebState extends State<MoteurWeb> {
                                             decoration: InputDecoration(
                                               //   labelText: 'Destination',
                                               border: OutlineInputBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          80),
-                                                         borderSide: BorderSide(
-        color: Colors.black, // Modifier cette valeur pour la couleur noire
-        width: 2.0, // Épaisseur de la bordure selon vos besoins
-      ),),
+                                                borderRadius:
+                                                    BorderRadius.circular(80),
+                                                borderSide: BorderSide(
+                                                  color: Colors
+                                                      .black, // Modifier cette valeur pour la couleur noire
+                                                  width:
+                                                      2.0, // Épaisseur de la bordure selon vos besoins
+                                                ),
+                                              ),
                                               //  border: InputBorder.none,
-                                              focusColor: Color.fromARGB(255, 1, 1, 1),
+                                              focusColor:
+                                                  Color.fromARGB(255, 1, 1, 1),
                                             ),
                                             value: _selectedOption5[0],
                                             onChanged: (String? newValue) {
@@ -1625,9 +1640,8 @@ class _MoteurWebState extends State<MoteurWeb> {
                                             decoration: BoxDecoration(
                                               color: Colors.white,
                                               border: Border.all(
-                                                color:
-                                                    Color.fromARGB(255, 173, 173, 173),
-                                                        
+                                                color: Color.fromARGB(
+                                                    255, 173, 173, 173),
                                                 width: 2,
                                               ),
                                               borderRadius:
@@ -1739,9 +1753,8 @@ class _MoteurWebState extends State<MoteurWeb> {
                                             decoration: BoxDecoration(
                                               color: Colors.white,
                                               border: Border.all(
-                                                color:
-                                                    Color.fromARGB(255, 173, 173, 173),
-                                                       
+                                                color: Color.fromARGB(
+                                                    255, 173, 173, 173),
                                                 width: 2,
                                               ),
                                               borderRadius:
@@ -1884,8 +1897,8 @@ class _MoteurWebState extends State<MoteurWeb> {
                                             color: Color.fromARGB(
                                                 255, 255, 255, 255),
                                             border: Border.all(
-                                              color:
-                                                    Color.fromARGB(255, 173, 173, 173),
+                                              color: Color.fromARGB(
+                                                  255, 173, 173, 173),
                                               width: 2,
                                             ),
                                             borderRadius:
@@ -2681,32 +2694,32 @@ class _MyModalState extends State<MyModal> {
                                         removeSelectFields(index);
                                       },
                                     ),
-                                  ), */  Container(
-                                    width: 40,
-                                    height: 40,
-                                    decoration: BoxDecoration(
-    color: Colors.white,
-    border: Border.all(
-      color: Color.fromARGB(255, 0, 0, 0),
-      width: 1,
-    ),
-    shape: BoxShape.circle,
-  ),
-                               
-                                    child:Center(
-                                    child: IconButton(
-                                      icon: Icon(Icons.remove),
-                                      color: Color.fromARGB(255, 0, 0, 0),
-                                      onPressed: () {
-                                        removeSelectFields(index);
-                                      },
-                                    ),
-                                    ) ),
+                                  ), */
+                                  Container(
+                                      width: 40,
+                                      height: 40,
+                                      decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        border: Border.all(
+                                          color: Color.fromARGB(255, 0, 0, 0),
+                                          width: 1,
+                                        ),
+                                        shape: BoxShape.circle,
+                                      ),
+                                      child: Center(
+                                        child: IconButton(
+                                          icon: Icon(Icons.remove),
+                                          color: Color.fromARGB(255, 0, 0, 0),
+                                          onPressed: () {
+                                            removeSelectFields(index);
+                                          },
+                                        ),
+                                      )),
                                 SizedBox(
                                   width: 10,
                                 ),
                                 if (index == 0)
-                                 /*  CircleAvatar(
+                                  /*  CircleAvatar(
                                     backgroundColor:
                                         Color.fromARGB(255, 3, 3, 3),
                                     child: IconButton(
@@ -2717,27 +2730,26 @@ class _MyModalState extends State<MyModal> {
                                       },
                                     ),
                                   ) */
-                                    Container(
-                                    width: 40,
-                                    height: 40,
-                                    decoration: BoxDecoration(
-    color: Colors.white,
-    border: Border.all(
-      color: Color.fromARGB(255, 0, 0, 0),
-      width: 1,
-    ),
-    shape: BoxShape.circle,
-  ),
-                               
-                                    child:Center(
-                                    child: IconButton(
-                                      icon: Icon(Icons.add),
-                                      color: Color.fromARGB(255, 0, 0, 0),
-                                      onPressed: () {
-                                          addSelectFields();
-                                      },
-                                    ),
-                                    ) ),
+                                  Container(
+                                      width: 40,
+                                      height: 40,
+                                      decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        border: Border.all(
+                                          color: Color.fromARGB(255, 0, 0, 0),
+                                          width: 1,
+                                        ),
+                                        shape: BoxShape.circle,
+                                      ),
+                                      child: Center(
+                                        child: IconButton(
+                                          icon: Icon(Icons.add),
+                                          color: Color.fromARGB(255, 0, 0, 0),
+                                          onPressed: () {
+                                            addSelectFields();
+                                          },
+                                        ),
+                                      )),
                               ],
                             )),
                         /* ListTile(
@@ -2924,8 +2936,7 @@ class _MyModalState extends State<MyModal> {
                                 RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(40),
                                   side: BorderSide(
-                                    color: Color.fromARGB(255, 0, 0, 0)
-                                        ,
+                                    color: Color.fromARGB(255, 0, 0, 0),
                                     width: 1.0,
                                   ),
                                 ),
@@ -2939,7 +2950,8 @@ class _MyModalState extends State<MyModal> {
                           },
                           child: Text(
                             'Cancel',
-                            style: TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
+                            style:
+                                TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
                           ),
                         )),
                         SizedBox(
@@ -2953,8 +2965,7 @@ class _MyModalState extends State<MyModal> {
                                 RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(40),
                                   side: BorderSide(
-                                    color: Color.fromARGB(255, 0, 0, 0)
-                                      ,
+                                    color: Color.fromARGB(255, 0, 0, 0),
                                     width: 1.0,
                                   ),
                                 ),
@@ -2969,7 +2980,8 @@ class _MyModalState extends State<MyModal> {
                           },
                           child: Text(
                             'OK',
-                            style: TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
+                            style:
+                                TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
                           ),
                         )),
                         SizedBox(
